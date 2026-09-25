@@ -7,12 +7,21 @@ The notebooks introduce control of the on-board LEDs, switches and push buttons 
 ## Requirements
 
 - Digilent Zybo legacy board
-- SD card with PYNQ 3.0.1
+- SD card with PYNQ 3.0.1 for the Digilent Zybo legacy board
 - the `base.bit` overlay supplied with the Zybo PYNQ image
 - Ethernet connection between the computer and the board
 - a web browser for the Jupyter interface
 
 No external sensors or additional hardware are required.
+
+## PYNQ image
+
+This repository was tested with the following PYNQ 3.0.1 image for the Digilent Zybo legacy board:
+
+- Repository: https://github.com/nick-petrovsky/PYNQ-ZYBO
+- Image file: `Zybo-3.0.1-fix-boot-bin-fix-havege.img.xz`
+
+Write the image to the SD card using a raw disk imaging tool such as Win32 Disk Imager.
 
 ## Laboratory notebooks
 
