@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="420" viewBox="0 0 1100 420">
+<rect width="1100" height="420" rx="20" fill="#f1f5f9"/>
+<style>text{font-family:Arial,sans-serif;fill:#15304c}.title{font-size:29px;font-weight:bold}.head{font-size:24px;font-weight:bold}.body{font-size:20px}.foot{font-size:18px}</style>
+<text x="40" y="55" class="title">Where does notebook code execute?</text>
+<rect x="40" y="95" width="320" height="235" rx="14" fill="white" stroke="#2563eb" stroke-width="2"/>
+<text x="60" y="137" class="head">Laboratory computer</text>
+<text x="60" y="180" class="body">Web browser</text>
+<text x="60" y="216" class="body">Notebook editing</text>
+<text x="60" y="252" class="body">Display of results</text>
+<text x="60" y="288" class="body">Ethernet connection</text>
+<rect x="390" y="95" width="320" height="235" rx="14" fill="white" stroke="#2563eb" stroke-width="2"/>
+<text x="410" y="137" class="head">Zybo: software</text>
+<text x="410" y="180" class="body">Jupyter server</text>
+<text x="410" y="216" class="body">Python kernel</text>
+<text x="410" y="252" class="body">Linux commands</text>
+<text x="410" y="288" class="body">Files on the board</text>
+<rect x="740" y="95" width="320" height="235" rx="14" fill="white" stroke="#2563eb" stroke-width="2"/>
+<text x="760" y="137" class="head">Zybo: hardware</text>
+<text x="760" y="180" class="body">Zynq processing system</text>
+<text x="760" y="216" class="body">Programmable logic</text>
+<text x="760" y="252" class="body">Board peripherals</text>
+<text x="760" y="288" class="body">Used in later labs</text>
+<text x="40" y="379" class="foot">Browser interaction crosses the network; the notebook kernel in this laboratory runs on the Zybo.</text></svg>

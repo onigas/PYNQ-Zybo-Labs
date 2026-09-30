@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="420" viewBox="0 0 1100 420">
+<rect width="1100" height="420" rx="20" fill="#f1f5f9"/>
+<style>text{font-family:Arial,sans-serif;fill:#15304c}.title{font-size:29px;font-weight:bold}.head{font-size:24px;font-weight:bold}.body{font-size:20px}.foot{font-size:18px}</style>
+<text x="40" y="55" class="title">Zynq and the PYNQ software environment</text>
+<rect x="40" y="95" width="320" height="235" rx="14" fill="white" stroke="#2563eb" stroke-width="2"/>
+<text x="60" y="137" class="head">Processing System (PS)</text>
+<text x="60" y="180" class="body">ARM processors</text>
+<text x="60" y="216" class="body">Linux operating system</text>
+<text x="60" y="252" class="body">Python + PYNQ</text>
+<text x="60" y="288" class="body">Jupyter server / kernel</text>
+<rect x="390" y="95" width="320" height="235" rx="14" fill="white" stroke="#2563eb" stroke-width="2"/>
+<text x="410" y="137" class="head">Programmable Logic (PL)</text>
+<text x="410" y="180" class="body">Configurable hardware</text>
+<text x="410" y="216" class="body">Parallel digital circuits</text>
+<text x="410" y="252" class="body">Hardware peripherals</text>
+<text x="410" y="288" class="body">Loaded hardware design</text>
+<rect x="740" y="95" width="320" height="235" rx="14" fill="white" stroke="#2563eb" stroke-width="2"/>
+<text x="760" y="137" class="head">PS / PL connection</text>
+<text x="760" y="180" class="body">Control and data exchange</text>
+<text x="760" y="216" class="body">Python calls a driver</text>
+<text x="760" y="252" class="body">Driver accesses hardware</text>
+<text x="760" y="288" class="body">Hardware returns results</text>
+<text x="40" y="379" class="foot">Python executes on the PS. A hardware design must already exist before Python can use the PL.</text></svg>

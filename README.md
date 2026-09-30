@@ -25,6 +25,10 @@ Write the image to the SD card using a raw disk imaging tool such as Win32 Disk 
 
 ## Laboratory notebooks
 
+### Lab 0 — Getting Started with PYNQ
+
+[Open Lab 0](Lab0/README.md): PYNQ and Zynq concepts, development boards, Jupyter/JupyterLab, board connection and a first Python notebook.
+
 ### Lab 01 — Basic GPIO
 
 | Notebook | Topic |
@@ -59,6 +63,9 @@ Some exercises contain continuous loops. Use **Kernel → Interrupt** in Jupyter
 
 ```text
 PYNQ-Zybo-Labs/
+├── Lab0/
+│   ├── README.md
+│   └── images/
 ├── Lab01/
 │   ├── Lab01.1_LED.ipynb
 │   ├── Lab01.2_Switch_LED.ipynb
