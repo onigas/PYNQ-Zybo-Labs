@@ -2,7 +2,7 @@
 
 Laboratory exercises for **PYNQ 3.0.1** on the **Digilent Zybo legacy (Zynq-7000)** board.
 
-The notebooks introduce control of the on-board LEDs, switches and push buttons from Python, followed by timing and software-PWM experiments.
+The notebooks introduce control of the on-board LEDs, switches and push buttons from Python, followed by timing, software-PWM, and XADC-based system-monitoring experiments.
 
 ## Requirements
 
@@ -49,6 +49,18 @@ Write the image to the SD card using a raw disk imaging tool such as Win32 Disk 
 | [Lab02.4_Button_Controlled_PWM.ipynb](Lab02/Lab02.4_Button_Controlled_PWM.ipynb) | Button-controlled PWM |
 | [Lab02.5_Dual_LED_PWM_Controller.ipynb](Lab02/Lab02.5_Dual_LED_PWM_Controller.ipynb) | Dual-LED PWM controller and timing investigation |
 
+### Lab 03 — XADC and system monitoring
+
+| Notebook | Topic |
+|---|---|
+| [Lab03.1_XADC_Temperature.ipynb](Lab03/Lab03.1_XADC_Temperature.ipynb) | Zynq die-temperature measurement through Linux IIO |
+| [Lab03.2_XADC_Voltages.ipynb](Lab03/Lab03.2_XADC_Voltages.ipynb) | Internal XADC supply-voltage monitoring |
+| [Lab03.3_XADC_Data_Logging.ipynb](Lab03/Lab03.3_XADC_Data_Logging.ipynb) | Periodic sampling, statistics, plotting and CSV logging |
+| [Lab03.4_XADC_Thermal_Response.ipynb](Lab03/Lab03.4_XADC_Thermal_Response.ipynb) | Die-temperature response under controlled CPU load |
+| [Lab03.5_Integrated_XADC_System_Monitor.ipynb](Lab03/Lab03.5_Integrated_XADC_System_Monitor.ipynb) | Integrated XADC/GPIO monitoring assignment and optional CSV logger |
+
+The XADC experiments use the Linux Industrial I/O interface provided by the tested PYNQ image. They do not require an AXI XADC IP block in `base.bit`.
+
 ## Download and use
 
 1. Select **Code → Download ZIP** on the repository page.
@@ -57,7 +69,7 @@ Write the image to the SD card using a raw disk imaging tool such as Win32 Disk 
 4. Upload the required `.ipynb` files.
 5. Open the notebooks and complete them in numerical order.
 
-Some exercises contain continuous loops. Use **Kernel → Interrupt** in Jupyter when instructed to stop execution. Always leave the on-board LEDs switched off after an interrupted experiment.
+Some exercises contain continuous loops or background worker processes. Use **Kernel → Interrupt** in Jupyter when instructed to stop execution. Always leave the on-board LEDs switched off after an interrupted GPIO experiment.
 
 ## Repository structure
 
@@ -78,5 +90,13 @@ PYNQ-Zybo-Labs/
 │   ├── Lab02.3_PWM_LED_Brightness.ipynb
 │   ├── Lab02.4_Button_Controlled_PWM.ipynb
 │   └── Lab02.5_Dual_LED_PWM_Controller.ipynb
+├── Lab03/
+│   ├── Lab03.1_XADC_Temperature.ipynb
+│   ├── Lab03.2_XADC_Voltages.ipynb
+│   ├── Lab03.3_XADC_Data_Logging.ipynb
+│   ├── Lab03.4_XADC_Thermal_Response.ipynb
+│   └── Lab03.5_Integrated_XADC_System_Monitor.ipynb
+├── tools/
+│   └── xadc_iio_test.py
 └── README.md
 ```
