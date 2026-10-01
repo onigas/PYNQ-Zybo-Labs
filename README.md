@@ -57,9 +57,12 @@ Write the image to the SD card using a raw disk imaging tool such as Win32 Disk 
 | [Lab03.2_XADC_Voltages.ipynb](Lab03/Lab03.2_XADC_Voltages.ipynb) | Internal XADC supply-voltage monitoring |
 | [Lab03.3_XADC_Data_Logging.ipynb](Lab03/Lab03.3_XADC_Data_Logging.ipynb) | Periodic sampling, statistics, plotting and CSV logging |
 | [Lab03.4_XADC_Thermal_Response.ipynb](Lab03/Lab03.4_XADC_Thermal_Response.ipynb) | Die-temperature response under controlled CPU load |
-| [Lab03.5_Integrated_XADC_System_Monitor.ipynb](Lab03/Lab03.5_Integrated_XADC_System_Monitor.ipynb) | Integrated XADC/GPIO monitoring assignment and optional CSV logger |
+| [Lab03.5_Thermal_Alarm_Automatic_Protection.ipynb](Lab03/Lab03.5_Thermal_Alarm_Automatic_Protection.ipynb) | Thermal warning, hysteresis and automatic workload shutdown |
+| [Lab03.6_Integrated_XADC_System_Monitor.ipynb](Lab03/Lab03.6_Integrated_XADC_System_Monitor.ipynb) | Integrated XADC/GPIO monitoring assignment and optional CSV logger |
 
 The XADC experiments use the Linux Industrial I/O interface provided by the tested PYNQ image. They do not require an AXI XADC IP block in `base.bit`.
+
+Lab03.5 implements a deliberately conservative **software** thermal-protection experiment. It does not attempt to trigger the Zynq hardware over-temperature shutdown.
 
 ## Download and use
 
@@ -95,7 +98,8 @@ PYNQ-Zybo-Labs/
 │   ├── Lab03.2_XADC_Voltages.ipynb
 │   ├── Lab03.3_XADC_Data_Logging.ipynb
 │   ├── Lab03.4_XADC_Thermal_Response.ipynb
-│   └── Lab03.5_Integrated_XADC_System_Monitor.ipynb
+│   ├── Lab03.5_Thermal_Alarm_Automatic_Protection.ipynb
+│   └── Lab03.6_Integrated_XADC_System_Monitor.ipynb
 ├── tools/
 │   └── xadc_iio_test.py
 └── README.md
