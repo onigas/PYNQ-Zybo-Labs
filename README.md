@@ -2,7 +2,7 @@
 
 Laboratory exercises for **PYNQ 3.0.1** on the **Digilent Zybo legacy (Zynq-7000)** board.
 
-The notebooks introduce control of the on-board LEDs, switches and push buttons from Python, followed by timing, software-PWM, and XADC-based system-monitoring experiments.
+The notebooks introduce control of the on-board LEDs, switches and push buttons from Python, followed by timing, software-PWM, XADC-based system monitoring, and OpenCV-based real-time computer vision.
 
 ## Requirements
 
@@ -11,8 +11,7 @@ The notebooks introduce control of the on-board LEDs, switches and push buttons 
 - the `base.bit` overlay supplied with the Zybo PYNQ image
 - Ethernet connection between the computer and the board
 - a web browser for the Jupyter interface
-
-No external sensors or additional hardware are required.
+- Logitech C270 USB webcam for Lab 04
 
 ## PYNQ image
 
@@ -64,6 +63,19 @@ The XADC experiments use the Linux Industrial I/O interface provided by the test
 
 Lab03.5 implements a deliberately conservative **software** thermal-protection experiment. It does not attempt to trigger the Zynq hardware over-temperature shutdown.
 
+### Lab 04 — OpenCV and real-time color tracking
+
+[Open Lab 04](Lab04/README.md): OpenCV fundamentals, Logitech C270 USB webcam acquisition, HSV color segmentation, real-time color detection, contours, object tracking, and vision-controlled Zybo LEDs.
+
+| Notebook | Topic |
+|---|---|
+| [Lab04.1_OpenCV_Image_Basics.ipynb](Lab04/Lab04.1_OpenCV_Image_Basics.ipynb) | Image loading, BGR/RGB, grayscale, pixels and ROI |
+| [Lab04.2_USB_Webcam.ipynb](Lab04/Lab04.2_USB_Webcam.ipynb) | Logitech C270 USB webcam acquisition from Jupyter |
+| [Lab04.3_HSV_and_Color_Masks.ipynb](Lab04/Lab04.3_HSV_and_Color_Masks.ipynb) | HSV segmentation, thresholds and morphological cleanup |
+| [Lab04.4_Real_Time_Color_Detection.ipynb](Lab04/Lab04.4_Real_Time_Color_Detection.ipynb) | Real-time red, green, blue and yellow detection |
+| [Lab04.5_Contours_and_Object_Tracking.ipynb](Lab04/Lab04.5_Contours_and_Object_Tracking.ipynb) | Contours, bounding boxes, center and left/center/right tracking |
+| [Lab04.6_Color_Tracker_with_LEDs.ipynb](Lab04/Lab04.6_Color_Tracker_with_LEDs.ipynb) | Integrated camera + OpenCV tracker + Zybo LED feedback |
+
 ## Download and use
 
 1. Select **Code → Download ZIP** on the repository page.
@@ -100,6 +112,15 @@ PYNQ-Zybo-Labs/
 │   ├── Lab03.4_XADC_Thermal_Response.ipynb
 │   ├── Lab03.5_Thermal_Alarm_Automatic_Protection.ipynb
 │   └── Lab03.6_Integrated_XADC_System_Monitor.ipynb
+├── Lab04/
+│   ├── README.md
+│   ├── Lab04.1_OpenCV_Image_Basics.ipynb
+│   ├── Lab04.2_USB_Webcam.ipynb
+│   ├── Lab04.3_HSV_and_Color_Masks.ipynb
+│   ├── Lab04.4_Real_Time_Color_Detection.ipynb
+│   ├── Lab04.5_Contours_and_Object_Tracking.ipynb
+│   ├── Lab04.6_Color_Tracker_with_LEDs.ipynb
+│   └── images/
 ├── tools/
 │   └── xadc_iio_test.py
 └── README.md
