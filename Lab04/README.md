@@ -1,67 +1,64 @@
-# Lab 04 — OpenCV and Real-Time Color Tracking
+# Lab 04 — OpenCV and Color Tracking
 
-This laboratory introduces computer vision on the **Digilent Zybo legacy** running **PYNQ 3.0.1**. OpenCV processing runs on the ARM Processing System (PS). A **Logitech C270 USB webcam** is introduced early so that the exercises move quickly from static images to real-time vision.
+A practical laboratory for **Zybo legacy / PYNQ 3.0.1**, using **OpenCV 4.5.4** and the **Logitech C270**. Vision processing runs on the ARM Processing System. The last experiment connects the result to the board LEDs.
 
-## Hardware
+## Before starting
 
-- Digilent Zybo legacy
-- PYNQ 3.0.1 image used by this repository
-- Logitech C270 USB webcam
-- Ethernet connection to the board
-- No additional sensors are required
+- Use the board and camera setup already verified in this course: Linux V4L2, `/dev/video0`, 20 discarded warm-up frames, inline JPEG display in Jupyter, and `cap.release()`.
+- Open the notebooks on the Zybo in the Python 3 environment where OpenCV 4.5.4 already works. Do not reinstall or upgrade OpenCV for this lab.
+- Have green and blue objects (colored paper or plastic), a simple background and steady room lighting.
+- Run each notebook top to bottom, with the working directory set to `Lab04`. Lab04.1 generates `images/colored_shapes.png`, which Lab04.3 uses.
+- Use only one camera notebook at a time. Variables and device settings are not shared between notebook kernels.
+- The first exercise is a short introduction (about 10 minutes); the camera is introduced immediately afterward.
 
-## Notebooks
+## Guided experiments
 
-| Notebook | Topic |
+| Notebook | Activity |
 |---|---|
-| [Lab04.1_OpenCV_Image_Basics.ipynb](Lab04.1_OpenCV_Image_Basics.ipynb) | Images, BGR/RGB, grayscale, pixels and regions of interest |
-| [Lab04.2_USB_Webcam.ipynb](Lab04.2_USB_Webcam.ipynb) | Detecting and testing the Logitech C270 from Jupyter |
-| [Lab04.3_HSV_and_Color_Masks.ipynb](Lab04.3_HSV_and_Color_Masks.ipynb) | HSV color space, thresholding and binary masks |
-| [Lab04.4_Real_Time_Color_Detection.ipynb](Lab04.4_Real_Time_Color_Detection.ipynb) | Real-time red/green/blue/yellow detection |
-| [Lab04.5_Contours_and_Object_Tracking.ipynb](Lab04.5_Contours_and_Object_Tracking.ipynb) | Contours, bounding boxes, area and object center |
-| [Lab04.6_Color_Tracker_with_LEDs.ipynb](Lab04.6_Color_Tracker_with_LEDs.ipynb) | Integrated camera + color tracker + Zybo LED feedback |
+| [Lab04.1](Lab04.1_OpenCV_Image_Basics.ipynb) | Generate an image, inspect pixels and select a region |
+| [Lab04.2](Lab04.2_USB_Webcam.ipynb) | Capture a real frame and run a short live preview |
+| [Lab04.3](Lab04.3_HSV_and_Color_Masks.ipynb) | Compare the image, raw mask and cleaned mask |
+| [Lab04.4](Lab04.4_Real_Time_Color_Detection.ipynb) | Show two colored objects and adjust the area threshold |
+| [Lab04.5](Lab04.5_Contours_and_Object_Tracking.ipynb) | Observe bounding box, centroid, area and LOST |
+| [Lab04.6](Lab04.6_Color_Tracker_with_LEDs.ipynb) | Move one object to light LD0, LD1 or LD2; remove it for LD3 |
 
-## Learning outcomes
+All working code is supplied. Exercises ask students to observe results or change one parameter at a time. There is no large final programming assignment, switch/button controller, or required multi-object tracking extension.
 
-After completing the laboratory, students should be able to:
+## Camera operation
 
-- load and inspect images with OpenCV;
-- explain the BGR/RGB difference;
-- convert images between BGR, RGB, grayscale and HSV;
-- acquire frames from a USB webcam;
-- construct HSV masks for selected colors;
-- remove small mask artifacts using morphological operations;
-- extract contours and object position;
-- implement a simple real-time color tracker;
-- connect a vision result to physical output on the Zybo board.
+Each camera notebook includes the same supplied helper. It opens `CAMERA_DEVICE`, checks that the camera opened, requests 640×480, discards 20 frames and validates every read. Check `frame.shape` for the actual negotiated resolution.
 
-## Important Jupyter note
+The `with camera_session()` block uses `try/finally` to release the camera on normal completion, Python errors and ordinary kernel interrupts. Still-image processing takes place after camera release. Live sessions have both a frame limit and a time limit, measured after warm-up. A blocked USB driver read can delay a timeout or interrupt; this is not a driver watchdog.
 
-Do **not** use `cv2.imshow()` on the board. The notebooks display frames inline using IPython/Jupyter.
+If capture fails:
 
-Always release the webcam after an experiment:
+1. Shut down other kernels that may hold the camera; closing a browser tab is not enough.
+2. For older code without cleanup, run `cap.release()` in the kernel that opened it.
+3. Inspect `/dev/video*` and `fuser -v /dev/video0` using the optional check in Lab04.2.
+4. If a read remains blocked, restart/shut down the owning kernel; reconnect the camera if necessary.
+5. If the capture device path changed, set `CAMERA_DEVICE` in each notebook you use. Do not blindly assume a second video node provides images.
 
-```python
-cap.release()
-```
+Images are displayed inside Jupyter; no `cv2.imshow()` window is required.
 
-If a camera cell is interrupted, run `cap.release()` manually before reopening the camera.
+## LED experiment
 
-## Processing architecture
+Lab04.6 uses the same interface as Lab01 and Lab03:
 
-```text
-Logitech C270
-     |
-     | USB
-     v
-Zynq ARM Processing System
-     |
-     | OpenCV / Python
-     v
-HSV -> mask -> contours -> object position
-     |
-     v
-PYNQ GPIO -> Zybo LEDs
-```
+`Overlay("base.bit") → ol.leds_gpio.channel1 → setdirection("out") → setlength(4)`
 
-The laboratory deliberately performs the vision algorithms in software on the ARM processor. This establishes a baseline that can later be compared with FPGA-accelerated processing.
+The LEDs show LEFT, CENTER, RIGHT and LOST relative to the displayed image. They are switched off when the session exits. No new overlay is needed.
+
+## What students record
+
+- Actual camera resolution.
+- One observation about changing a mask threshold or lighting.
+- One centroid coordinate and its horizontal region.
+- Whether all four LED states worked.
+
+## References and verification
+
+- [OpenCV 4.5.4: color spaces and masks](https://docs.opencv.org/4.5.4/df/d9d/tutorial_py_colorspaces.html)
+- [OpenCV 4.5.4: contour features](https://docs.opencv.org/4.5.4/dd/d49/tutorial_py_contour_features.html)
+- [PYNQ AXI GPIO interface](https://pynq.readthedocs.io/en/v3.0.0/pynq_package/pynq.lib/pynq.lib.axigpio.html)
+
+Camera acquisition was previously verified on the board. These revised notebooks reuse that acquisition sequence and the GPIO interface from earlier labs; the complete revised notebooks still require an end-to-end run on Zybo. No new hardware execution is claimed.
