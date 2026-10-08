@@ -77,6 +77,18 @@ Lab03.5 implements a deliberately conservative **software** thermal-protection e
 
 Lab04 now uses five notebooks. Lab04.3 combines red-marker and RGB color detection, Lab04.4 tracks the selected color, and Lab04.5 adds LED feedback.
 
+### Lab 05 — Traffic Sign Recognition (OpenCV)
+
+[Open Lab 05](Lab05/README.md): detection and classification of traffic signs from static images, including HSV segmentation, contour analysis, shape detection and rule-based recognition. No webcam or FPGA overlay is required.
+
+| Notebook | Topic |
+|---|---|
+| [Lab05.1_Traffic_Sign_Color_Segmentation.ipynb](Lab05/Lab05.1_Traffic_Sign_Color_Segmentation.ipynb) | HSV red/blue segmentation and masks |
+| [Lab05.2_Traffic_Sign_Shape_Detection.ipynb](Lab05/Lab05.2_Traffic_Sign_Shape_Detection.ipynb) | Contours, candidate bounding boxes and shapes |
+| [Lab05.3_Traffic_Sign_Recognition.ipynb](Lab05/Lab05.3_Traffic_Sign_Recognition.ipynb) | Rule-based classification and tests on additional scenes |
+
+Lab05 includes four synthetic images in `Lab05/images/`. Each code cell is preceded by a purpose statement and the pipeline includes visual checkpoints.
+
 ## Download and use
 
 1. Select **Code → Download ZIP** on the repository page.
@@ -120,6 +132,12 @@ PYNQ-Zybo-Labs/
 │   ├── Lab04.3_HSV_and_Color_Masks.ipynb
 │   ├── Lab04.4_Real_Time_Color_Detection.ipynb
 │   ├── Lab04.5_Vision_Controlled_Zybo_LEDs.ipynb
+│   └── images/
+├── Lab05/
+│   ├── README.md
+│   ├── Lab05.1_Traffic_Sign_Color_Segmentation.ipynb
+│   ├── Lab05.2_Traffic_Sign_Shape_Detection.ipynb
+│   ├── Lab05.3_Traffic_Sign_Recognition.ipynb
 │   └── images/
 ├── tools/
 │   └── xadc_iio_test.py
