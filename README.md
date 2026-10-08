@@ -73,8 +73,9 @@ Lab03.5 implements a deliberately conservative **software** thermal-protection e
 | [Lab04.2_USB_Webcam.ipynb](Lab04/Lab04.2_USB_Webcam.ipynb) | Logitech C270 capture with safe release |
 | [Lab04.3_HSV_and_Color_Masks.ipynb](Lab04/Lab04.3_HSV_and_Color_Masks.ipynb) | Combined red-marker and simultaneous RED/GREEN/BLUE segmentation |
 | [Lab04.4_Real_Time_Color_Detection.ipynb](Lab04/Lab04.4_Real_Time_Color_Detection.ipynb) | Contours, centroid, region area and successive-frame LEFT/CENTER/RIGHT/LOST tracking |
+| [Lab04.5_Vision_Controlled_Zybo_LEDs.ipynb](Lab04/Lab04.5_Vision_Controlled_Zybo_LEDs.ipynb) | Camera-controlled LD0–LD3, with LEFT/CENTER/RIGHT/LOST states |
 
-Earlier Lab04.5–Lab04.6 notebooks remain in the repository unchanged, pending consolidation and validation. The revised Lab04.3 replaces the need for a separate three-color acquisition exercise.
+Lab04 now uses five notebooks. Lab04.3 combines red-marker and RGB color detection, Lab04.4 tracks the selected color, and Lab04.5 adds LED feedback.
 
 ## Download and use
 
@@ -118,8 +119,7 @@ PYNQ-Zybo-Labs/
 │   ├── Lab04.2_USB_Webcam.ipynb
 │   ├── Lab04.3_HSV_and_Color_Masks.ipynb
 │   ├── Lab04.4_Real_Time_Color_Detection.ipynb
-│   ├── Lab04.5_Contours_and_Object_Tracking.ipynb
-│   ├── Lab04.6_Color_Tracker_with_LEDs.ipynb
+│   ├── Lab04.5_Vision_Controlled_Zybo_LEDs.ipynb
 │   └── images/
 ├── tools/
 │   └── xadc_iio_test.py
