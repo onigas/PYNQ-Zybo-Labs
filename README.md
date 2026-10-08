@@ -72,8 +72,9 @@ Lab03.5 implements a deliberately conservative **software** thermal-protection e
 | [Lab04.1_OpenCV_Image_Basics.ipynb](Lab04/Lab04.1_OpenCV_Image_Basics.ipynb) | Synthetic scene, BGR/RGB, grayscale and grid-selected ROI |
 | [Lab04.2_USB_Webcam.ipynb](Lab04/Lab04.2_USB_Webcam.ipynb) | Logitech C270 capture with safe release |
 | [Lab04.3_HSV_and_Color_Masks.ipynb](Lab04/Lab04.3_HSV_and_Color_Masks.ipynb) | Combined red-marker and simultaneous RED/GREEN/BLUE segmentation |
+| [Lab04.4_Real_Time_Color_Detection.ipynb](Lab04/Lab04.4_Real_Time_Color_Detection.ipynb) | Contours, centroid, region area and successive-frame LEFT/CENTER/RIGHT/LOST tracking |
 
-Earlier Lab04.4–Lab04.6 notebooks remain in the repository unchanged, pending consolidation and validation. The revised Lab04.3 replaces the need for a separate three-color acquisition exercise.
+Earlier Lab04.5–Lab04.6 notebooks remain in the repository unchanged, pending consolidation and validation. The revised Lab04.3 replaces the need for a separate three-color acquisition exercise.
 
 ## Download and use
 
