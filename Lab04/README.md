@@ -24,6 +24,19 @@ A practical laboratory for **Zybo legacy / PYNQ 3.0.1**, using **OpenCV 4.5.4** 
 
 All working code is supplied. Exercises ask students to observe results or change one parameter at a time. There is no large final programming assignment, switch/button controller, or required multi-object tracking extension.
 
+## Experimentally validated color detection tasks
+
+These additional, self-contained notebooks document the Logitech C270 tests performed on the Zybo. They supplement the numbered Lab04 notebooks without replacing the existing introduction or webcam acquisition exercises.
+
+| Task | Notebook | Verified behavior |
+|---|---|---|
+| Task 4.1 — Red marker detection | [Task4.1_Red_Marker_Detection.ipynb](Task4.1_Red_Marker_Detection.ipynb) | One vertical red-marker region, with hand detections suppressed |
+| Task 4.2 — RGB color-region detection | [Task4.2_RGB_Color_Detection.ipynb](Task4.2_RGB_Color_Detection.ipynb) | Three markers identified; RED: 2 regions, GREEN: 2 regions, BLUE: 1 region |
+
+Both notebooks use `/dev/video0`, V4L2, a 640×480 capture request, 30 warm-up frames, inline JPEG display and camera release via `finally`. Comments and student instructions are in English.
+
+The RGB task counts segmented color regions, **not complete objects**. White printed areas can split one marker into multiple contours. Thresholds are empirical and may need adjustment under different lighting.
+
 ## Camera operation
 
 Each camera notebook includes the same supplied helper. It opens `CAMERA_DEVICE`, checks that the camera opened, requests 640×480, discards 20 frames and validates every read. Check `frame.shape` for the actual negotiated resolution.
