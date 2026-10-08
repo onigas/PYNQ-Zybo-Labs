@@ -63,18 +63,17 @@ The XADC experiments use the Linux Industrial I/O interface provided by the test
 
 Lab03.5 implements a deliberately conservative **software** thermal-protection experiment. It does not attempt to trigger the Zynq hardware over-temperature shutdown.
 
-### Lab 04 — OpenCV and real-time color tracking
+### Lab 04 — OpenCV and USB webcam color detection
 
-[Open Lab 04](Lab04/README.md): OpenCV fundamentals, Logitech C270 USB webcam acquisition, HSV color segmentation, real-time color detection, contours, object tracking, and vision-controlled Zybo LEDs.
+[Open Lab 04](Lab04/README.md): Zybo Legacy with Logitech C270; image basics, grid-guided ROI, camera acquisition, red-marker detection and simultaneous RGB masks.
 
 | Notebook | Topic |
 |---|---|
-| [Lab04.1_OpenCV_Image_Basics.ipynb](Lab04/Lab04.1_OpenCV_Image_Basics.ipynb) | Image loading, BGR/RGB, grayscale, pixels and ROI |
-| [Lab04.2_USB_Webcam.ipynb](Lab04/Lab04.2_USB_Webcam.ipynb) | Logitech C270 USB webcam acquisition from Jupyter |
-| [Lab04.3_HSV_and_Color_Masks.ipynb](Lab04/Lab04.3_HSV_and_Color_Masks.ipynb) | HSV segmentation, thresholds and morphological cleanup |
-| [Lab04.4_Real_Time_Color_Detection.ipynb](Lab04/Lab04.4_Real_Time_Color_Detection.ipynb) | Real-time red, green, blue and yellow detection |
-| [Lab04.5_Contours_and_Object_Tracking.ipynb](Lab04/Lab04.5_Contours_and_Object_Tracking.ipynb) | Contours, bounding boxes, center and left/center/right tracking |
-| [Lab04.6_Color_Tracker_with_LEDs.ipynb](Lab04/Lab04.6_Color_Tracker_with_LEDs.ipynb) | Integrated camera + OpenCV tracker + Zybo LED feedback |
+| [Lab04.1_OpenCV_Image_Basics.ipynb](Lab04/Lab04.1_OpenCV_Image_Basics.ipynb) | Synthetic scene, BGR/RGB, grayscale and grid-selected ROI |
+| [Lab04.2_USB_Webcam.ipynb](Lab04/Lab04.2_USB_Webcam.ipynb) | Logitech C270 capture with safe release |
+| [Lab04.3_HSV_and_Color_Masks.ipynb](Lab04/Lab04.3_HSV_and_Color_Masks.ipynb) | Combined red-marker and simultaneous RED/GREEN/BLUE segmentation |
+
+Earlier Lab04.4–Lab04.6 notebooks remain in the repository unchanged, pending consolidation and validation. The revised Lab04.3 replaces the need for a separate three-color acquisition exercise.
 
 ## Download and use
 
