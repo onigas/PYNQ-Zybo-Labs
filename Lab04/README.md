@@ -18,10 +18,9 @@ Practical laboratory for **Digilent Zybo Legacy**, **PYNQ 3.0.1**, **OpenCV 4.5.
 | [Lab04.2 — USB Webcam](Lab04.2_USB_Webcam.ipynb) | Logitech C270 acquisition, warm-up, JPEG display and camera release | Revised |
 | [Lab04.3 — HSV and RGB Color Detection](Lab04.3_HSV_and_Color_Masks.ipynb) | Red marker calibration, HSV + RGB filtering, simultaneous RED/GREEN/BLUE masks and contours | Revised |
 | [Lab04.4 — Contours and Object Tracking](Lab04.4_Real_Time_Color_Detection.ipynb) | Largest colored region, contour area, centroid, LEFT/CENTER/RIGHT/LOST, successive-frame tracking | Tested on Zybo |
-| [Lab04.5 — Contours and Object Tracking](Lab04.5_Contours_and_Object_Tracking.ipynb) | Earlier tracking material, pending reorganization | Not yet revised |
-| [Lab04.6 — Color Tracker with LEDs](Lab04.6_Color_Tracker_with_LEDs.ipynb) | Earlier LED experiment, pending reorganization | Not yet revised |
+| [Lab04.5 — Vision-Controlled Zybo LEDs](Lab04.5_Vision_Controlled_Zybo_LEDs.ipynb) | Camera + color tracking + LEFT/CENTER/RIGHT/LOST LED feedback | User-approved for publication |
 
-**Important:** Lab04.3 combines red-marker and three-color detection. Lab04.4 adds position tracking using the same segmentation. Lab04.5–Lab04.6 are legacy notebooks awaiting reorganization; no parallel versions have been added.
+**Important:** Lab04 now contains five notebooks. Lab04.3 combines single-color and RGB segmentation; Lab04.4 tracks color regions; Lab04.5 integrates tracking with Zybo LEDs. Superseded Lab04.5 and Lab04.6 notebook files have been removed.
 
 ## Recommended sequence
 
@@ -29,6 +28,7 @@ Practical laboratory for **Digilent Zybo Legacy**, **PYNQ 3.0.1**, **OpenCV 4.5.
 2. In Lab04.2, capture an image from the C270 and confirm that the camera can be opened again on subsequent runs.
 3. In Lab04.3, run the red-marker detector, then the three-color detector and compare their binary masks.
 4. In Lab04.4, test the tracked marker in LEFT, CENTER, RIGHT and LOST states, then run the 60-frame tracking demonstration.
+5. In Lab04.5, verify LD0–LD3 and test camera-controlled LEDs.
 
 ## Camera handling
 
@@ -43,4 +43,4 @@ The acquisition helper opens `/dev/video0` through `cv2.CAP_V4L2`, requests 640 
 
 ## Verification
 
-The camera, color detection thresholds and outputs were tested experimentally in the earlier iterative work. Lab04.1–Lab04.4 have been reported working on Zybo. Lab04.5–Lab04.6 remain unreviewed in the current sequence.
+The camera, color detection thresholds and outputs were tested experimentally in the earlier iterative work. Lab04.1–Lab04.4 were reported working on Zybo. Lab04.5 was approved for publication after the user's test feedback.
