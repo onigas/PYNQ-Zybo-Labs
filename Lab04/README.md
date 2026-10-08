@@ -1,64 +1,45 @@
-# Lab 04 — OpenCV and Color Tracking
+# Lab 04 — OpenCV and USB Webcam Color Detection
 
-A practical laboratory for **Zybo legacy / PYNQ 3.0.1**, using **OpenCV 4.5.4** and the **Logitech C270**. Vision processing runs on the ARM Processing System. The last experiment connects the result to the board LEDs.
+Practical laboratory for **Digilent Zybo Legacy**, **PYNQ 3.0.1**, **OpenCV 4.5.4** and a **Logitech C270** USB webcam. The camera has been tested with V4L2 at `/dev/video0` (actual frame size: 640 × 480).
 
-## Before starting
+## Required setup
 
-- Use the board and camera setup already verified in this course: Linux V4L2, `/dev/video0`, 20 discarded warm-up frames, inline JPEG display in Jupyter, and `cap.release()`.
-- Open the notebooks on the Zybo in the Python 3 environment where OpenCV 4.5.4 already works. Do not reinstall or upgrade OpenCV for this lab.
-- Have green and blue objects (colored paper or plastic), a simple background and steady room lighting.
-- Run each notebook top to bottom, with the working directory set to `Lab04`. Lab04.1 generates `images/colored_shapes.png`, which Lab04.3 uses.
-- Use only one camera notebook at a time. Variables and device settings are not shared between notebook kernels.
-- The first exercise is a short introduction (about 10 minutes); the camera is introduced immediately afterward.
+- Zybo Legacy with the tested PYNQ image and Jupyter.
+- Logitech C270 connected to the USB port.
+- Red, green and blue markers; stable lighting.
+- Run each notebook top to bottom in a separate kernel. Do not run two notebooks accessing the camera concurrently.
+- Do not install a different OpenCV version for this laboratory.
 
-## Guided experiments
+## Current notebooks
 
-| Notebook | Activity |
-|---|---|
-| [Lab04.1](Lab04.1_OpenCV_Image_Basics.ipynb) | Generate an image, inspect pixels and select a region |
-| [Lab04.2](Lab04.2_USB_Webcam.ipynb) | Capture a real frame and run a short live preview |
-| [Lab04.3](Lab04.3_HSV_and_Color_Masks.ipynb) | Compare the image, raw mask and cleaned mask |
-| [Lab04.4](Lab04.4_Real_Time_Color_Detection.ipynb) | Show two colored objects and adjust the area threshold |
-| [Lab04.5](Lab04.5_Contours_and_Object_Tracking.ipynb) | Observe bounding box, centroid, area and LOST |
-| [Lab04.6](Lab04.6_Color_Tracker_with_LEDs.ipynb) | Move one object to light LD0, LD1 or LD2; remove it for LD3 |
+| Notebook | Topic | Status |
+|---|---|---|
+| [Lab04.1 — OpenCV Image Basics](Lab04.1_OpenCV_Image_Basics.ipynb) | Synthetic image, BGR/RGB, grayscale, grid and student-selected ROI | Revised |
+| [Lab04.2 — USB Webcam](Lab04.2_USB_Webcam.ipynb) | Logitech C270 acquisition, warm-up, JPEG display and camera release | Revised |
+| [Lab04.3 — HSV and RGB Color Detection](Lab04.3_HSV_and_Color_Masks.ipynb) | Red marker calibration, HSV + RGB filtering, simultaneous RED/GREEN/BLUE masks and contours | Revised |
+| [Lab04.4 — Real-Time Color Detection](Lab04.4_Real_Time_Color_Detection.ipynb) | Earlier material, pending reorganization into tracking | Not yet revised |
+| [Lab04.5 — Contours and Object Tracking](Lab04.5_Contours_and_Object_Tracking.ipynb) | Earlier tracking material, pending reorganization | Not yet revised |
+| [Lab04.6 — Color Tracker with LEDs](Lab04.6_Color_Tracker_with_LEDs.ipynb) | Earlier LED experiment, pending reorganization | Not yet revised |
 
-All working code is supplied. Exercises ask students to observe results or change one parameter at a time. There is no large final programming assignment, switch/button controller, or required multi-object tracking extension.
+**Important:** Lab04.3 now combines the previously separate red-marker and three-color experiments. Lab04.4–Lab04.6 are retained unchanged until the next redesign/test cycle; they do not yet match the proposed five-notebook end structure. No parallel versions have been added.
 
-## Camera operation
+## Recommended sequence
 
-Each camera notebook includes the same supplied helper. It opens `CAMERA_DEVICE`, checks that the camera opened, requests 640×480, discards 20 frames and validates every read. Check `frame.shape` for the actual negotiated resolution.
+1. In Lab04.1, generate `images/colored_shapes.png` and use the grid to estimate coordinates for an ROI without being given its bounds.
+2. In Lab04.2, capture an image from the C270 and confirm that the camera can be opened again on subsequent runs.
+3. In Lab04.3, run the red-marker detector, then the three-color detector and compare their binary masks.
 
-The `with camera_session()` block uses `try/finally` to release the camera on normal completion, Python errors and ordinary kernel interrupts. Still-image processing takes place after camera release. Live sessions have both a frame limit and a time limit, measured after warm-up. A blocked USB driver read can delay a timeout or interrupt; this is not a driver watchdog.
+## Camera handling
 
-If capture fails:
+The acquisition helper opens `/dev/video0` through `cv2.CAP_V4L2`, requests 640 × 480, discards 30 warm-up frames, then releases the device with `try/finally`. Display is inline in Jupyter; **do not use** `cv2.imshow()`. If opening fails, check other notebooks/kernels before changing device settings. The time delay between warm-up frames assists exposure stabilization.
 
-1. Shut down other kernels that may hold the camera; closing a browser tab is not enough.
-2. For older code without cleanup, run `cap.release()` in the kernel that opened it.
-3. Inspect `/dev/video*` and `fuser -v /dev/video0` using the optional check in Lab04.2.
-4. If a read remains blocked, restart/shut down the owning kernel; reconnect the camera if necessary.
-5. If the capture device path changed, set `CAMERA_DEVICE` in each notebook you use. Do not blindly assume a second video node provides images.
+## Interpreting the results
 
-Images are displayed inside Jupyter; no `cv2.imshow()` window is required.
+- RED detection uses two HSV hue bands because red wraps around the hue boundary.
+- The red-marker exercise adds a height/width filter for a **vertical marker only**.
+- The RGB exercise detects **colored regions**, not entire physical objects. White writing/labels can split one marker into multiple contours.
+- During experiments with three markers, RED: 2, GREEN: 2, BLUE: 1 regions were observed. Parameters may need adjustment under other illumination.
 
-## LED experiment
+## Verification
 
-Lab04.6 uses the same interface as Lab01 and Lab03:
-
-`Overlay("base.bit") → ol.leds_gpio.channel1 → setdirection("out") → setlength(4)`
-
-The LEDs show LEFT, CENTER, RIGHT and LOST relative to the displayed image. They are switched off when the session exits. No new overlay is needed.
-
-## What students record
-
-- Actual camera resolution.
-- One observation about changing a mask threshold or lighting.
-- One centroid coordinate and its horizontal region.
-- Whether all four LED states worked.
-
-## References and verification
-
-- [OpenCV 4.5.4: color spaces and masks](https://docs.opencv.org/4.5.4/df/d9d/tutorial_py_colorspaces.html)
-- [OpenCV 4.5.4: contour features](https://docs.opencv.org/4.5.4/dd/d49/tutorial_py_contour_features.html)
-- [PYNQ AXI GPIO interface](https://pynq.readthedocs.io/en/v3.0.0/pynq_package/pynq.lib/pynq.lib.axigpio.html)
-
-Camera acquisition was previously verified on the board. These revised notebooks reuse that acquisition sequence and the GPIO interface from earlier labs; the complete revised notebooks still require an end-to-end run on Zybo. No new hardware execution is claimed.
+The camera, color detection thresholds and outputs were tested experimentally in the earlier iterative work. These newly consolidated notebook files still require a complete top-to-bottom execution on Zybo.
