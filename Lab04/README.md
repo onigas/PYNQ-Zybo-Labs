@@ -17,17 +17,18 @@ Practical laboratory for **Digilent Zybo Legacy**, **PYNQ 3.0.1**, **OpenCV 4.5.
 | [Lab04.1 — OpenCV Image Basics](Lab04.1_OpenCV_Image_Basics.ipynb) | Synthetic image, BGR/RGB, grayscale, grid and student-selected ROI | Revised |
 | [Lab04.2 — USB Webcam](Lab04.2_USB_Webcam.ipynb) | Logitech C270 acquisition, warm-up, JPEG display and camera release | Revised |
 | [Lab04.3 — HSV and RGB Color Detection](Lab04.3_HSV_and_Color_Masks.ipynb) | Red marker calibration, HSV + RGB filtering, simultaneous RED/GREEN/BLUE masks and contours | Revised |
-| [Lab04.4 — Real-Time Color Detection](Lab04.4_Real_Time_Color_Detection.ipynb) | Earlier material, pending reorganization into tracking | Not yet revised |
+| [Lab04.4 — Contours and Object Tracking](Lab04.4_Real_Time_Color_Detection.ipynb) | Largest colored region, contour area, centroid, LEFT/CENTER/RIGHT/LOST, successive-frame tracking | Tested on Zybo |
 | [Lab04.5 — Contours and Object Tracking](Lab04.5_Contours_and_Object_Tracking.ipynb) | Earlier tracking material, pending reorganization | Not yet revised |
 | [Lab04.6 — Color Tracker with LEDs](Lab04.6_Color_Tracker_with_LEDs.ipynb) | Earlier LED experiment, pending reorganization | Not yet revised |
 
-**Important:** Lab04.3 now combines the previously separate red-marker and three-color experiments. Lab04.4–Lab04.6 are retained unchanged until the next redesign/test cycle; they do not yet match the proposed five-notebook end structure. No parallel versions have been added.
+**Important:** Lab04.3 combines red-marker and three-color detection. Lab04.4 adds position tracking using the same segmentation. Lab04.5–Lab04.6 are legacy notebooks awaiting reorganization; no parallel versions have been added.
 
 ## Recommended sequence
 
 1. In Lab04.1, generate `images/colored_shapes.png` and use the grid to estimate coordinates for an ROI without being given its bounds.
 2. In Lab04.2, capture an image from the C270 and confirm that the camera can be opened again on subsequent runs.
 3. In Lab04.3, run the red-marker detector, then the three-color detector and compare their binary masks.
+4. In Lab04.4, test the tracked marker in LEFT, CENTER, RIGHT and LOST states, then run the 60-frame tracking demonstration.
 
 ## Camera handling
 
@@ -42,4 +43,4 @@ The acquisition helper opens `/dev/video0` through `cv2.CAP_V4L2`, requests 640 
 
 ## Verification
 
-The camera, color detection thresholds and outputs were tested experimentally in the earlier iterative work. These newly consolidated notebook files still require a complete top-to-bottom execution on Zybo.
+The camera, color detection thresholds and outputs were tested experimentally in the earlier iterative work. Lab04.1–Lab04.4 have been reported working on Zybo. Lab04.5–Lab04.6 remain unreviewed in the current sequence.
