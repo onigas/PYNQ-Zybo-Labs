@@ -7,9 +7,9 @@ The paired FPGA files belong in this directory:
 
 Both bitstreams were provided from Vivado **2022.2** for device **7z010clg400**. Their metadata contains the expected AXI GPIO blocks.
 
-**Current repository status:** The four generated binaries are **not yet committed**. Source code and Tcl scripts are in `../hardware/`. Notebook 06.3 and 06.4 automatically locate the four files here once installed.
+**Status:** All four prebuilt FPGA files are committed in this directory. The uploaded Git blobs have been compared against the original instructor-provided files and match byte for byte (SHA-1 Git blob IDs). Students can use them directly without installing Vivado. Source code and Tcl build scripts are available in `../hardware/`. Notebooks 06.3 and 06.4 locate the matching `.bit`/`.hwh` pairs automatically.
 
-## Instructor-supplied binaries: SHA-256
+## Published binary integrity: SHA-256
 
 | File | SHA-256 |
 |---|---|
