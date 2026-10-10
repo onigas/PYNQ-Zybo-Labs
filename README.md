@@ -89,6 +89,19 @@ Lab04 now uses five notebooks. Lab04.3 combines red-marker and RGB color detecti
 
 Lab05 includes four synthetic images in `Lab05/images/`. Each code cell is preceded by a purpose statement and the pipeline includes visual checkpoints.
 
+### Lab 06 — Introduction to Hardware Acceleration
+
+[Open Lab 06](Lab06/README.md): PS–PL architecture, AXI register access, custom multiply-accumulate FPGA accelerator and batch-MAC performance analysis.
+
+| Notebook | Topic |
+|---|---|
+| [Lab06.1_PS_PL_Architecture.ipynb](Lab06/notebooks/Lab06.1_PS_PL_Architecture.ipynb) | Explore PS/PL, AXI peripherals and IP metadata |
+| [Lab06.2_AXI_Register_Access.ipynb](Lab06/notebooks/Lab06.2_AXI_Register_Access.ipynb) | Low-level MMIO access to LED GPIO registers |
+| [Lab06.3_Custom_Hardware_Accelerator.ipynb](Lab06/notebooks/Lab06.3_Custom_Hardware_Accelerator.ipynb) | FPGA MAC accelerator: A×B+C |
+| [Lab06.4_ARM_vs_FPGA_Performance.ipynb](Lab06/notebooks/Lab06.4_ARM_vs_FPGA_Performance.ipynb) | Single-MAC overhead versus batch-MAC and FPGA cycle count |
+
+The Lab06 directory includes the **Vivado 2022.2 Tcl build scripts, Verilog RTL and testbenches** for the single MAC and batch MAC designs. The two FPGA overlays are generated locally; the repository does not contain the instructor's `.bit`/`.hwh` files. Lab06.4 explains that the reported speedup is relative to a **Python loop**, not an optimized ARM implementation.
+
 ## Download and use
 
 1. Select **Code → Download ZIP** on the repository page.
@@ -139,6 +152,18 @@ PYNQ-Zybo-Labs/
 │   ├── Lab05.2_Traffic_Sign_Shape_Detection.ipynb
 │   ├── Lab05.3_Traffic_Sign_Recognition.ipynb
 │   └── images/
+├── Lab06/
+│   ├── README.md
+│   ├── notebooks/
+│   │   ├── Lab06.1_PS_PL_Architecture.ipynb
+│   │   ├── Lab06.2_AXI_Register_Access.ipynb
+│   │   ├── Lab06.3_Custom_Hardware_Accelerator.ipynb
+│   │   └── Lab06.4_ARM_vs_FPGA_Performance.ipynb
+│   └── hardware/
+│       ├── README.md
+│       ├── build_lab06.tcl
+│       ├── build_lab06_batch.tcl
+│       └── rtl/
 ├── tools/
 │   └── xadc_iio_test.py
 └── README.md
