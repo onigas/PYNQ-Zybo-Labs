@@ -29,10 +29,10 @@ Every code cell is preceded by a Markdown explanation. **06.1–06.3 were tested
    source {C:/path/to/Lab06/hardware/build_lab06_batch.tcl}
    ```
 3. The scripts generate four files in `hardware/output/`: `lab06.bit`, `lab06.hwh`, `lab06_batch.bit`, `lab06_batch.hwh`.
-4. In Jupyter on Zybo, create `Lab06/notebooks` and upload the four notebook files and **both .bit/.hwh pairs** into that same folder.
+4. In Jupyter on Zybo, create `Lab06/notebooks` and upload the four notebooks into `Lab06/notebooks/`, and copy **both .bit/.hwh pairs** into `Lab06/overlays/` (or beside the notebooks, for backward compatibility).
 5. Execute notebooks 06.1 to 06.4 in order. Reloading an overlay reprograms FPGA logic; previously created MMIO mappings must not be reused after a different overlay is loaded.
 
-**Bitstream availability:** generated `.bit` and `.hwh` files are **not included** in this repository because the locally built files from the instructor's Vivado workstation were not provided to this session. The repository contains the exact sources and scripts to regenerate them. Keep generated files as matched pairs.
+**Bitstream availability:** the instructor has provided and validated all four generated files, but they have **not yet been committed to this repository**. Their SHA-256 checksums are documented in [`overlays/README.md`](overlays/README.md). Until the binaries are published, build both overlay pairs from source or obtain the verified files from the instructor. Keep `.bit` and `.hwh` as matched pairs.
 
 ## Benchmark interpretation
 
