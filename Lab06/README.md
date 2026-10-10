@@ -20,19 +20,29 @@ Every code cell is preceded by a Markdown explanation. **06.1–06.3 were tested
 - [Hardware README](hardware/README.md): Vivado setup, register map, testbench and safety notes.
 - Both accelerators have simulation testbenches in `hardware/rtl/`.
 
-## Deployment on Zybo
+## Deployment on Zybo — Vivado NOT required
 
-1. Use the **original Digilent Zybo board files**, not Zybo Z7-10.
-2. With **Vivado 2022.2**, run both scripts from the Tcl Console:
-   ```tcl
-   source {C:/path/to/Lab06/hardware/build_lab06.tcl}
-   source {C:/path/to/Lab06/hardware/build_lab06_batch.tcl}
-   ```
-3. The scripts generate four files in `hardware/output/`: `lab06.bit`, `lab06.hwh`, `lab06_batch.bit`, `lab06_batch.hwh`.
-4. In Jupyter on Zybo, create `Lab06/notebooks` and upload the four notebooks into `Lab06/notebooks/`, and copy **both .bit/.hwh pairs** into `Lab06/overlays/` (or beside the notebooks, for backward compatibility).
-5. Execute notebooks 06.1 to 06.4 in order. Reloading an overlay reprograms FPGA logic; previously created MMIO mappings must not be reused after a different overlay is loaded.
+The repository provides two ready-to-use bitstream and hardware metadata pairs in [`overlays/`](overlays/):
 
-**Bitstream availability:** the instructor has provided and validated all four generated files, but they have **not yet been committed to this repository**. Their SHA-256 checksums are documented in [`overlays/README.md`](overlays/README.md). Until the binaries are published, build both overlay pairs from source or obtain the verified files from the instructor. Keep `.bit` and `.hwh` as matched pairs.
+- `lab06.bit` and `lab06.hwh` — one MAC operation per host command
+- `lab06_batch.bit` and `lab06_batch.hwh` — batch MAC with an internal clock-cycle counter
+
+1. Open the repository and choose **Code → Download ZIP**.
+2. Extract the archive on your computer.
+3. In Jupyter on Zybo, upload the **complete `Lab06` directory**, preserving its `notebooks/` and `overlays/` subdirectories (the RTL and Vivado build sources are optional for student execution).
+4. Open the notebooks inside `Lab06/notebooks/` and execute 06.1 through 06.4 in numerical order.
+5. Notebook 06.3 and 06.4 automatically discover the matched files in `../overlays/`; as a fallback, they also support putting both files of a pair beside the notebook.
+
+The `base.bit` overlay used in 06.1–06.2 comes from the board's PYNQ image. Loading `lab06.bit` or `lab06_batch.bit` reprograms PL; previously created MMIO objects must not be reused after another overlay is loaded.
+
+**Instructor / advanced option:** to modify or regenerate hardware, use the original Digilent Zybo *legacy* board files (not Zybo Z7-10) with **Vivado 2022.2**:
+
+```tcl
+source {C:/path/to/Lab06/hardware/build_lab06.tcl}
+source {C:/path/to/Lab06/hardware/build_lab06_batch.tcl}
+```
+
+The build scripts produce the two matched pairs in `hardware/output/`. Their published SHA-256 checksums are documented in [`overlays/README.md`](overlays/README.md).
 
 ## Benchmark interpretation
 
@@ -59,4 +69,4 @@ At the configured **100 MHz**, 100,000 hardware cycles correspond to **1 ms of i
 - Lab06.1–06.3: reported functional on the physical Zybo board.
 - Original MAC: 100/100 additional randomized tests passed.
 - Batch MAC: correct functional output and performance measurements reported from the physical Zybo.
-- The original laboratory environment and generated bitstream files are not available in this chat; the Vivado implementation timing report (WNS) has not been independently inspected. Verify timing closure before classroom use.
+- Both published bitstreams match the instructor-provided files; Vivado implementation timing reports (WNS) have not been independently inspected. Verify timing closure if rebuilding or modifying the RTL.
