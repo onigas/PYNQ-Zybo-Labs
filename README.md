@@ -100,7 +100,7 @@ Lab05 includes four synthetic images in `Lab05/images/`. Each code cell is prece
 | [Lab06.3_Custom_Hardware_Accelerator.ipynb](Lab06/notebooks/Lab06.3_Custom_Hardware_Accelerator.ipynb) | FPGA MAC accelerator: A×B+C |
 | [Lab06.4_ARM_vs_FPGA_Performance.ipynb](Lab06/notebooks/Lab06.4_ARM_vs_FPGA_Performance.ipynb) | Single-MAC overhead versus batch-MAC and FPGA cycle count |
 
-The Lab06 directory includes the **Vivado 2022.2 Tcl build scripts, Verilog RTL and testbenches** for the single MAC and batch MAC designs. The two FPGA overlays are generated locally; the repository does not contain the instructor's `.bit`/`.hwh` files. Lab06.4 explains that the reported speedup is relative to a **Python loop**, not an optimized ARM implementation.
+The Lab06 directory includes **two ready-to-use, verified `.bit`/`.hwh` FPGA overlay pairs** in [Lab06/overlays](Lab06/overlays), plus Vivado 2022.2 Tcl build scripts, Verilog RTL and testbenches for rebuilding. **Students do not need Vivado** to run the notebooks; preserve the Lab06 directory structure when uploading to Zybo. Lab06.4 explains that the reported speedup is relative to a **Python loop**, not an optimized ARM implementation.
 
 ## Download and use
 
@@ -159,6 +159,12 @@ PYNQ-Zybo-Labs/
 │   │   ├── Lab06.2_AXI_Register_Access.ipynb
 │   │   ├── Lab06.3_Custom_Hardware_Accelerator.ipynb
 │   │   └── Lab06.4_ARM_vs_FPGA_Performance.ipynb
+│   ├── overlays/
+│   │   ├── lab06.bit
+│   │   ├── lab06.hwh
+│   │   ├── lab06_batch.bit
+│   │   ├── lab06_batch.hwh
+│   │   └── README.md
 │   └── hardware/
 │       ├── README.md
 │       ├── build_lab06.tcl
