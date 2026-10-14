@@ -102,6 +102,18 @@ Lab05 includes four synthetic images in `Lab05/images/`. Each code cell is prece
 
 The Lab06 directory includes **two ready-to-use, verified `.bit`/`.hwh` FPGA overlay pairs** in [Lab06/overlays](Lab06/overlays), plus Vivado 2022.2 Tcl build scripts, Verilog RTL and testbenches for rebuilding. **Students do not need Vivado** to run the notebooks; preserve the Lab06 directory structure when uploading to Zybo. Lab06.4 explains that the reported speedup is relative to a **Python loop**, not an optimized ARM implementation.
 
+### Lab 07 — FPGA-Accelerated Image Processing
+
+[Open Lab 07](Lab07/README.md): image thresholding, labeled ROI coordinates, AXI-Stream packed pixel data, PS–PL AXI DMA image processing and ARM–FPGA performance comparisons.
+
+| Notebook | Topic |
+|---|---|
+| [Lab07.1_Image_Threshold_Fundamentals.ipynb](Lab07/notebooks/Lab07.1_Image_Threshold_Fundamentals.ipynb) | Coordinates, ROI, histogram, binary masks, AXI word packing and throughput |
+| [Lab07.2_AXIDMA_Threshold_Accelerator.ipynb](Lab07/notebooks/Lab07.2_AXIDMA_Threshold_Accelerator.ipynb) | FPGA+DMA threshold processing with bit-exact verification |
+| [Lab07.3_Real_Images_and_Benchmark.ipynb](Lab07/notebooks/Lab07.3_Real_Images_and_Benchmark.ipynb) | Python/NumPy/FPGA benchmark and color selection using Logitech C270 |
+
+Hardware RTL, Vivado Tcl builder and AXI DMA Python driver are in the Lab07 directory. The source files are published; **the instructor-supplied binary overlay pair and PNG images have not yet been attached to this GitHub folder**. They are required for execution, so this is a *source publication pending binary assets*.
+
 ## Download and use
 
 1. Select **Code → Download ZIP** on the repository page.
@@ -170,6 +182,18 @@ PYNQ-Zybo-Labs/
 │       ├── build_lab06.tcl
 │       ├── build_lab06_batch.tcl
 │       └── rtl/
+├── Lab07/
+│   ├── README.md
+│   ├── notebooks/
+│   │   ├── Lab07.1_Image_Threshold_Fundamentals.ipynb
+│   │   ├── Lab07.2_AXIDMA_Threshold_Accelerator.ipynb
+│   │   └── Lab07.3_Real_Images_and_Benchmark.ipynb
+│   ├── hardware/
+│   │   ├── build_lab07.tcl
+│   │   └── rtl/
+│   ├── tools/dma_threshold.py
+│   ├── images/ (PNG files pending)
+│   └── overlays/ (FPGA binary files pending)
 ├── tools/
 │   └── xadc_iio_test.py
 └── README.md
