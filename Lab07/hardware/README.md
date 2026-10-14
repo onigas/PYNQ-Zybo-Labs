@@ -65,4 +65,4 @@ Expected end line: `PASS: 32 streaming beats, 128 pixels, TLAST and backpressure
 
 The instructor confirmed successful execution on a physical **Zybo legacy** of notebooks 07.1, 07.2 and 07.3, including the revised color detection demonstration and the generated `lab07.bit`/`lab07.hwh` pair. The timing-closure report has not been independently reviewed.
 
-**Release state:** The hardware source code is published. The tested prebuilt binary files are not yet included in this GitHub commit and must be placed in `Lab07/overlays/` before running 07.2/07.3.
+**Release state:** The RTL, Vivado project builder, software driver, and the tested FPGA bitstream/HWH pair are published in this repository. Ready-to-use `lab07.bit` and `lab07.hwh` are in [`Lab07/overlays/`](../overlays/). Students can run 07.2 and 07.3 without generating a new bitstream. Timing closure reports have not been independently audited; check implementation timing when rebuilding hardware.

@@ -112,7 +112,7 @@ The Lab06 directory includes **two ready-to-use, verified `.bit`/`.hwh` FPGA ove
 | [Lab07.2_AXIDMA_Threshold_Accelerator.ipynb](Lab07/notebooks/Lab07.2_AXIDMA_Threshold_Accelerator.ipynb) | FPGA+DMA threshold processing with bit-exact verification |
 | [Lab07.3_Real_Images_and_Benchmark.ipynb](Lab07/notebooks/Lab07.3_Real_Images_and_Benchmark.ipynb) | Python/NumPy/FPGA benchmark and color selection using Logitech C270 |
 
-Hardware RTL, Vivado Tcl builder and AXI DMA Python driver are in the Lab07 directory. The source files are published; **the instructor-supplied binary overlay pair and PNG images have not yet been attached to this GitHub folder**. They are required for execution, so this is a *source publication pending binary assets*.
+Lab07 includes the tested **`lab07.bit` / `lab07.hwh` FPGA overlay pair**, both reference PNG images, the Vivado 2022.2 RTL/build files and the AXI DMA Python driver. Students can run Lab07 on Zybo legacy with PYNQ 3.0.1 **without Vivado**: download the repository and preserve the `Lab07/notebooks`, `Lab07/images`, `Lab07/tools`, and `Lab07/overlays` directory structure.
 
 ## Download and use
 
@@ -192,8 +192,12 @@ PYNQ-Zybo-Labs/
 │   │   ├── build_lab07.tcl
 │   │   └── rtl/
 │   ├── tools/dma_threshold.py
-│   ├── images/ (PNG files pending)
-│   └── overlays/ (FPGA binary files pending)
+│   ├── images/
+│   │   ├── scene_256.png
+│   │   └── scene_grid_256.png
+│   └── overlays/
+│       ├── lab07.bit
+│       └── lab07.hwh
 ├── tools/
 │   └── xadc_iio_test.py
 └── README.md

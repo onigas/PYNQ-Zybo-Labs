@@ -24,7 +24,7 @@ Each code cell has explanatory Markdown. The course distinguishes **ideal comput
 
 ## Student installation
 
-Keep this structure in the Jupyter workspace on Zybo:
+Download the repository as a ZIP, extract it, and copy the complete `Lab07/` directory to the Zybo Jupyter workspace. **Vivado is not needed for normal notebook execution.** Keep this structure:
 
 ```text
 Lab07/
@@ -38,7 +38,7 @@ Lab07/
     └── lab07.hwh
 ```
 
-The test images and hardware binary pair are necessary; notebook 07.1 uses the images, while 07.2 and 07.3 need the matching FPGA files. Place the directories in the same Lab07 root and launch the notebooks **from** `Lab07/notebooks/` to preserve relative paths.
+The prebuilt images and matching hardware pair are included in this repository: notebook 07.1 uses the images, while 07.2 and 07.3 also load the FPGA files. Place the directories in the same Lab07 root and launch the notebooks **from** `Lab07/notebooks/` to preserve relative paths.
 
 ## Hardware verification and timing
 
@@ -46,4 +46,4 @@ The instructor reported successful execution on actual Zybo legacy hardware of 0
 
 A host-call measurement includes Python, contiguous buffers, DDR, the DMA transaction and returned results, not just the comparator delay. Also note that only the saturation threshold is computed in FPGA in the final webcam example; HSV conversion, hue filtering, morphology and contours remain on ARM.
 
-**Publishing status:** Source files are being added first. The instructor-provided `.bit/.hwh` pair and PNG files must be verified in this repository before treating it as a turnkey student package. The verified complete archive is held by the instructor.
+**Publication complete:** All three notebooks, both reference images, the matching prebuilt `lab07.bit` / `lab07.hwh` pair, RTL sources, testbench, Vivado build script and AXI DMA driver are published in this repository. The binary files and PNG images were compared with the validated release archive and match byte for byte (Git blob identifiers). Students do not need Vivado to execute the notebooks.

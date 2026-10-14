@@ -2,7 +2,7 @@
 
 The pair `lab07.bit` and `lab07.hwh` (generated with Vivado 2022.2 for Zynq-7010) is used by Lab07.2 and Lab07.3. The metadata includes `axi_dma_0`, `threshold_axis_0` and `threshold_gpio`.
 
-**Publishing status:** Only the documentation is present until the verified instructor-supplied binary files have been added.
+**Published and verified:** Both hardware files are present in this directory on the main branch. Their Git blob IDs were compared against the instructor-supplied release archive and match exactly. No Vivado compilation is required to run Lab07.2 and Lab07.3 on the supported Zybo legacy board.
 
 SHA-256 from the verified local files:
 
