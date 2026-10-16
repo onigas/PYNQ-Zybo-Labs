@@ -217,10 +217,10 @@ PYNQ-Zybo-Labs/
 │   │   ├── Lab08.2_BNN_PYNQ_ARM_Inference.ipynb
 │   │   ├── Lab08.3_BNN_FPGA_Inference_GTSRB.ipynb
 │   │   ├── BATCH20_CELL.py
-│   │   └── gtsrb_batch20_inputs.npz (requires original binary)
+│   │   └── gtsrb_batch20_inputs.npz
 │   ├── overlays/
-│   │   ├── compact_gtsrb.bit (requires original binary)
-│   │   └── compact_gtsrb.hwh (requires original binary)
+│   │   ├── compact_gtsrb.bit
+│   │   └── compact_gtsrb.hwh
 │   ├── evidence/
 │   │   └── FPGA_VALIDATION.md
 │   └── tools/
