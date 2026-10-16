@@ -1,47 +1,65 @@
-# Lab08 — Pretrained BNN traffic-sign recognition
+# Lab08 — GTSRB traffic-sign recognition: dataset, ARM BNN and FPGA BNN
 
-**Board:** Digilent Zybo Legacy (XC7Z010), **PYNQ:** 3.0.1, **runtime:** ARM software. Both notebooks were tested on the real board.
+**Platform:** Digilent Zybo Legacy (XC7Z010), PYNQ 3.0.1.
 
-## Notebooks
+## Published laboratory notebooks
 
-| Notebook | Purpose | Board verification |
+| Notebook | Experiment | Previously verified on real Zybo |
 |---|---|---|
-| [Lab08.1_GTSRB_Real_Dataset.ipynb](notebooks/Lab08.1_GTSRB_Real_Dataset.ipynb) | Inspect official GTSRB CSV (12,630 annotations), 43 sign classes, images and 32×32 RGB resizing | Verified; `np.bincount` uses `int32` for ARMv7 compatibility |
-| [Lab08.2_BNN_PYNQ_ARM_Inference.ipynb](notebooks/Lab08.2_BNN_PYNQ_ARM_Inference.ipynb) | Load original pretrained CNV-W1A1 weights from [BNN-PYNQ](https://github.com/onigas/BNN-PYNQ), classify one of five official images, run five-image benchmark | **5/5 correctly classified**; mean ARM inference **1.587 s/image**, 0.630 images/s (library-reported) |
+| [Lab08.1 — GTSRB Dataset](notebooks/Lab08.1_GTSRB_Real_Dataset.ipynb) | Analyze the official GTSRB test CSV (12,630 labels), 43 classes, RGB images and resizing | Runs on ARM |
+| [Lab08.2 — Pretrained BNN on ARM](notebooks/Lab08.2_BNN_PYNQ_ARM_Inference.ipynb) | Original CNV-W1A1 model from [BNN-PYNQ](https://github.com/onigas/BNN-PYNQ), five selectable official GTSRB images | **5/5** correct; average library-reported **1.587 s/image** |
+| [Lab08.3 — Compact BNN on FPGA](notebooks/Lab08.3_BNN_FPGA_Inference_GTSRB.ipynb) | Real compact BNN overlay using AXI DMA, official traffic-sign images and optional Logitech C270 camera | **13/20** correct on selected GTSRB Test images; average end-to-end **23.15 ms/image** |
 
-**Important:** 5/5 is accuracy on **five selected images**, *not* accuracy on the full GTSRB test set. The neural network runs on ARM in software; **neither notebook loads an FPGA bitstream**. FPGA BNN acceleration on XC7Z010 has not yet been implemented or benchmarked.
+**Numbering:** the FPGA experiment was initially tested and saved as **Lab08.4**. It has been renumbered **Lab08.3** to avoid a gap. The abandoned, resource-exceeding **full nine-layer CNV HLS design** is NOT part of Lab08.
 
-## Prepare test data on Zybo
+**Do not calculate a same-model acceleration factor:** Lab08.2 (ARM CNV-W1A1) and Lab08.3 (compact FPGA BNN) use **different classifiers** and **different timing boundaries**. Their timings illustrate the respective implementations only. The selected sets of five and twenty test photographs do not establish full GTSRB accuracy.
 
-Preserve this directory structure:
+## Required files and directory structure
 
 ```text
 Lab08/
 ├── README.md
 ├── notebooks/
 │   ├── Lab08.1_GTSRB_Real_Dataset.ipynb
-│   └── Lab08.2_BNN_PYNQ_ARM_Inference.ipynb
+│   ├── Lab08.2_BNN_PYNQ_ARM_Inference.ipynb
+│   ├── Lab08.3_BNN_FPGA_Inference_GTSRB.ipynb
+│   ├── BATCH20_CELL.py
+│   └── gtsrb_batch20_inputs.npz               <-- original 20-image FPGA test
+├── overlays/
+│   ├── compact_gtsrb.bit                      <-- original XC7Z010 overlay
+│   └── compact_gtsrb.hwh                      <-- corresponding Vivado hardware handoff
+├── evidence/
+│   └── FPGA_VALIDATION.md                     <-- saved results from the original Zybo run
 ├── tools/
 │   └── gtsrb.py
 └── data/gtsrb/
-    ├── GT-final_test.csv
-    └── GTSRB/Final_Test/Images/00105.ppm
+    ├── GT-final_test.csv                     <-- official GTSRB ground truth
+    └── GTSRB/Final_Test/Images/
+        └── 00105.ppm                          <-- official GTSRB test image
 ```
 
-The last two files are **not included in Git**. Download the original [GTSRB dataset](https://benchmark.ini.rub.de/gtsrb_dataset.html) and copy **`GT-final_test.csv`** (the semicolon-separated official ground-truth file) and **`00105.ppm`** (from the official test-images archive) into the locations shown. Only one photograph is needed to start Lab08.1. If the board already has these files from earlier experiments, no action is needed.
+**Binary artifact status:** the three original binary files (`.bit`, `.hwh`, `.npz`) were provided by the author and verified locally with SHA-256; see [evidence/FPGA_VALIDATION.md](evidence/FPGA_VALIDATION.md). They are **required** to rerun Lab08.3. If they are not in the repository, place them at exactly the paths shown above; a ready-to-extract archive `Lab08.4_Zybo_Recovered.zip` also contains the originals. The connector-based publishing interface accepts only text and cannot upload these three binary files directly. **Never replace the FPGA bitstream with the abandoned full-CNV project's output.**
 
-## Run Lab08.2
+## Lab08.1 — Prepare GTSRB data
 
-1. Start Jupyter on Zybo and open `Lab08/notebooks/Lab08.2_BNN_PYNQ_ARM_Inference.ipynb`.
-2. Run sections 1–3. Section 2 downloads the original **32-bit ARM software library** and **179 parameter/class-label files** from a pinned `onigas/BNN-PYNQ` commit into `Lab08/assets/bnn_pynq_sw/`. Previously downloaded files are reused and checked. The notebook also documents a manual offline ZIP transfer.
-3. Run section 4. It selects five images with real labels from the official CSV (classes 4, 14, 1, 25, 33). If needed, it temporarily downloads the official **~84 MB GTSRB test-images archive**, extracts only the missing photographs, then removes the temporary archive. Have sufficient SD-card space and internet access or transfer the images manually.
-4. In section 5, change `IMAGE_INDEX = 0` to any integer from `0` to `4`. Run sections 5–6 to classify the selected image.
-5. Run section 7 to evaluate all five images in one isolated ARM process and report sample accuracy and average software inference time.
+The official `GT-final_test.csv` is a semicolon-separated dataset with 12,630 image labels. Download it together with `00105.ppm` from the [original GTSRB dataset](https://benchmark.ini.rub.de/gtsrb_dataset.html) and copy both to the locations shown. If the board already has the data from earlier experiments, reuse it. The notebooks do not require copying every one of the 12,630 photographs.
 
-**Dependencies:** Python 3.10, NumPy, OpenCV, Pillow, Matplotlib (available in the tested PYNQ 3.0.1 image). The historical BNN library is executed in a subprocess to avoid crashing the Jupyter kernel if incompatible. Do not install the original BNN-PYNQ package: its setup script explicitly supports PYNQ-Z1/Z2 and Ultra96, not Zybo.
+## Lab08.2 — Pretrained ARM inference
 
-## Source and provenance
+Open the notebook in Jupyter. Its asset download cell retrieves one original 32-bit ARM shared library and 179 parameter/label files from the pinned original BNN-PYNQ source commit `d39c1c75403db571f54dd0f0cf27ae5104ac968e` (offline ZIP procedure is provided). It then selects five official GTSRB Test images and can download the missing four photos from the official test archive. Classify one example by changing `IMAGE_INDEX` from 0 to 4; evaluate all five with the included batch cell. No FPGA is programmed in Lab08.2.
 
-The CPU classifier and pretrained road-sign parameters come from [onigas/BNN-PYNQ](https://github.com/onigas/BNN-PYNQ), a fork of Xilinx BNN-PYNQ. Runtime source snapshot: `d39c1c75403db571f54dd0f0cf27ae5104ac968e`. The original GTSRB images and CSV are used for evaluation. The `.so`, large test-data archive, per-image CIFAR files, and trained parameter binaries are excluded from the lab repository and downloaded on first use.
+## Lab08.3 — Real compact FPGA inference
 
-The original PYNQ-Z2 FPGA overlay is **incompatible** with Zybo XC7Z010 and is not used. Hardware design work is a future step, not part of these two verified notebooks.
+The original tested code uses `pynq.Overlay`, `allocate`, `axi_dma_0`, and two DMA buffers. The **first code cell programs the FPGA** with `compact_gtsrb.bit`. The single-image test uses the same `00105.ppm` and CSV as Lab08.1. The 20-image test calls the saved [BATCH20_CELL.py](notebooks/BATCH20_CELL.py) and reads `notebooks/gtsrb_batch20_inputs.npz`. The optional camera cell captures one frame from the Logitech C270.
+
+The source has been renumbered and published with a documented record of the prior successful tests; the published notebook has *not* been rerun on the physical board since renumbering. No hardware, FPGA inference function or previously tested image bytes have been intentionally altered. Full Vivado build sources for this compact bitstream have not been recovered.
+
+**Prior verified result details:** [FPGA_VALIDATION.md](evidence/FPGA_VALIDATION.md).
+
+## Limitations and provenance
+
+- GTSRB Test accuracy on 5 or 20 selected images is not full-dataset accuracy.
+- FPGA output consists of 44 signed int16 scores; class 43 is padding and must be treated as invalid.
+- The reported 23.15 ms/image is Python + cache + DMA + FPGA end-to-end time, not hardware core latency.
+- On camera: one inference was obtained, not a verified correctly recognized sign.
+- No FINN/QONNX development environment is required to **run** these experiments on Zybo.
