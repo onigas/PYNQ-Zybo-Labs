@@ -38,7 +38,7 @@ Lab08/
         └── 00105.ppm                          <-- official GTSRB test image
 ```
 
-**Binary artifact status:** the three original binary files (`.bit`, `.hwh`, `.npz`) were provided by the author and verified locally with SHA-256; see [evidence/FPGA_VALIDATION.md](evidence/FPGA_VALIDATION.md). They are **required** to rerun Lab08.3. If they are not in the repository, place them at exactly the paths shown above; a ready-to-extract archive `Lab08.4_Zybo_Recovered.zip` also contains the originals. The connector-based publishing interface accepts only text and cannot upload these three binary files directly. **Never replace the FPGA bitstream with the abandoned full-CNV project's output.**
+**Binary artifact status:** all three original files are committed to `main`: [`compact_gtsrb.bit`](overlays/compact_gtsrb.bit), [`compact_gtsrb.hwh`](overlays/compact_gtsrb.hwh), and [`gtsrb_batch20_inputs.npz`](notebooks/gtsrb_batch20_inputs.npz). Their sizes and reference SHA-256 checksums are listed in [evidence/FPGA_VALIDATION.md](evidence/FPGA_VALIDATION.md). Download the complete repository to preserve the directory structure. **Never replace the FPGA bitstream with the abandoned full-CNV project's output.**
 
 ## Lab08.1 — Prepare GTSRB data
 
