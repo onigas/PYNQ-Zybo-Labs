@@ -114,16 +114,17 @@ The Lab06 directory includes **two ready-to-use, verified `.bit`/`.hwh` FPGA ove
 
 Lab07 includes the tested **`lab07.bit` / `lab07.hwh` FPGA overlay pair**, both reference PNG images, the Vivado 2022.2 RTL/build files and the AXI DMA Python driver. Students can run Lab07 on Zybo legacy with PYNQ 3.0.1 **without Vivado**: download the repository and preserve the `Lab07/notebooks`, `Lab07/images`, `Lab07/tools`, and `Lab07/overlays` directory structure.
 
-### Lab 08 — Binary Neural Networks: Real Traffic Sign Recognition
+### Lab 08 — GTSRB traffic signs: dataset, BNN ARM and BNN FPGA
 
-[Open Lab 08](Lab08/README.md): official GTSRB dataset analysis and inference on the Zybo Legacy ARM processor using the original pretrained CNV-W1A1 network from [BNN-PYNQ](https://github.com/onigas/BNN-PYNQ).
+[Open Lab 08](Lab08/README.md): three confirmed Zybo Legacy experiments, including the compact FPGA BNN tested previously as Lab08.4 and now numbered **Lab08.3**.
 
 | Notebook | Topic |
 |---|---|
-| [Lab08.1_GTSRB_Real_Dataset.ipynb](Lab08/notebooks/Lab08.1_GTSRB_Real_Dataset.ipynb) | Official GTSRB labels, 43 categories, photographs and RGB preprocessing |
-| [Lab08.2_BNN_PYNQ_ARM_Inference.ipynb](Lab08/notebooks/Lab08.2_BNN_PYNQ_ARM_Inference.ipynb) | Pretrained BNN software inference on ARM; 5 selectable traffic signs, 5-image test and timing |
+| [Lab08.1_GTSRB_Real_Dataset.ipynb](Lab08/notebooks/Lab08.1_GTSRB_Real_Dataset.ipynb) | Official GTSRB labels, 43 classes, RGB images |
+| [Lab08.2_BNN_PYNQ_ARM_Inference.ipynb](Lab08/notebooks/Lab08.2_BNN_PYNQ_ARM_Inference.ipynb) | Pretrained BNN-PYNQ, ARM inference; five GTSRB signs, **5/5 correct**, average **1.587 s/image** |
+| [Lab08.3_BNN_FPGA_Inference_GTSRB.ipynb](Lab08/notebooks/Lab08.3_BNN_FPGA_Inference_GTSRB.ipynb) | Real compact BNN FPGA via AXI DMA; **13/20 correct**, average **23.15 ms/image**, optional C270 frame |
 
-**Verified on real Zybo:** all five selected GTSRB images were correctly classified (**5/5**). Average ARM inference time reported by the library: **1.587 s/image** (0.630 images/s). These five examples are not representative of full-dataset accuracy. No FPGA accelerator is used in Lab08.1–08.2; Lab08.3 hardware acceleration is a future exercise. Dataset images and pretrained binary assets are downloaded separately and are not committed.
+**Important:** ARM and FPGA tests use **different BNN models**, so the reported times must not be presented as a same-model speedup. Test-set sample accuracies are not overall model accuracy. The abandoned 9-layer FPGA HLS experiment is not part of Lab08. The original Zybo [FPGA validation record](Lab08/evidence/FPGA_VALIDATION.md) is included; a matching `compact_gtsrb.bit` / `.hwh` and original 20-image `.npz` are needed to rerun Lab08.3.
 
 ## Download and use
 
@@ -213,7 +214,15 @@ PYNQ-Zybo-Labs/
 │   ├── README.md
 │   ├── notebooks/
 │   │   ├── Lab08.1_GTSRB_Real_Dataset.ipynb
-│   │   └── Lab08.2_BNN_PYNQ_ARM_Inference.ipynb
+│   │   ├── Lab08.2_BNN_PYNQ_ARM_Inference.ipynb
+│   │   ├── Lab08.3_BNN_FPGA_Inference_GTSRB.ipynb
+│   │   ├── BATCH20_CELL.py
+│   │   └── gtsrb_batch20_inputs.npz (requires original binary)
+│   ├── overlays/
+│   │   ├── compact_gtsrb.bit (requires original binary)
+│   │   └── compact_gtsrb.hwh (requires original binary)
+│   ├── evidence/
+│   │   └── FPGA_VALIDATION.md
 │   └── tools/
 │       └── gtsrb.py
 ├── tools/
