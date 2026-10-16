@@ -7,6 +7,6 @@ Place the **original**, previously tested Zybo Legacy XC7Z010 overlay files here
 
 They must have identical base names so that `pynq.Overlay("../overlays/compact_gtsrb.bit")` can load the HWH metadata automatically.
 
-The files were provided and verified locally and are included in the archive `Lab08.4_Zybo_Recovered.zip`, but were **not transferred to GitHub through the connector**. Do not use the unsuccessful nine-layer CNV HLS project's bitstream. To finish GitHub packaging, upload these two binary files directly to this directory via GitHub's **Add file → Upload files** interface. Reference SHA-256 hashes are documented in [../evidence/FPGA_VALIDATION.md](../evidence/FPGA_VALIDATION.md).
+Both original files have now been uploaded to this GitHub repository and are available here alongside this README. Do not use the unsuccessful nine-layer CNV HLS project's bitstream. Reference SHA-256 hashes are documented in [../evidence/FPGA_VALIDATION.md](../evidence/FPGA_VALIDATION.md).
 
 Hardware input: 3072 bytes of interleaved RGB8 per 32×32 image; hardware output: 88 bytes containing 44 signed 16-bit scores, class 43 unused padding. AXI DMA controller: `axi_dma_0`.
