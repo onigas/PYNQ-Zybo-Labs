@@ -1,0 +1,6 @@
+# Data and binary artifacts downloaded during Lab08 execution
+/assets/
+/data/gtsrb/
+**/.ipynb_checkpoints/
+**/__pycache__/
+*.pyc
