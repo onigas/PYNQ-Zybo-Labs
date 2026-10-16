@@ -114,6 +114,17 @@ The Lab06 directory includes **two ready-to-use, verified `.bit`/`.hwh` FPGA ove
 
 Lab07 includes the tested **`lab07.bit` / `lab07.hwh` FPGA overlay pair**, both reference PNG images, the Vivado 2022.2 RTL/build files and the AXI DMA Python driver. Students can run Lab07 on Zybo legacy with PYNQ 3.0.1 **without Vivado**: download the repository and preserve the `Lab07/notebooks`, `Lab07/images`, `Lab07/tools`, and `Lab07/overlays` directory structure.
 
+### Lab 08 — Binary Neural Networks: Real Traffic Sign Recognition
+
+[Open Lab 08](Lab08/README.md): official GTSRB dataset analysis and inference on the Zybo Legacy ARM processor using the original pretrained CNV-W1A1 network from [BNN-PYNQ](https://github.com/onigas/BNN-PYNQ).
+
+| Notebook | Topic |
+|---|---|
+| [Lab08.1_GTSRB_Real_Dataset.ipynb](Lab08/notebooks/Lab08.1_GTSRB_Real_Dataset.ipynb) | Official GTSRB labels, 43 categories, photographs and RGB preprocessing |
+| [Lab08.2_BNN_PYNQ_ARM_Inference.ipynb](Lab08/notebooks/Lab08.2_BNN_PYNQ_ARM_Inference.ipynb) | Pretrained BNN software inference on ARM; 5 selectable traffic signs, 5-image test and timing |
+
+**Verified on real Zybo:** all five selected GTSRB images were correctly classified (**5/5**). Average ARM inference time reported by the library: **1.587 s/image** (0.630 images/s). These five examples are not representative of full-dataset accuracy. No FPGA accelerator is used in Lab08.1–08.2; Lab08.3 hardware acceleration is a future exercise. Dataset images and pretrained binary assets are downloaded separately and are not committed.
+
 ## Download and use
 
 1. Select **Code → Download ZIP** on the repository page.
@@ -198,6 +209,13 @@ PYNQ-Zybo-Labs/
 │   └── overlays/
 │       ├── lab07.bit
 │       └── lab07.hwh
+├── Lab08/
+│   ├── README.md
+│   ├── notebooks/
+│   │   ├── Lab08.1_GTSRB_Real_Dataset.ipynb
+│   │   └── Lab08.2_BNN_PYNQ_ARM_Inference.ipynb
+│   └── tools/
+│       └── gtsrb.py
 ├── tools/
 │   └── xadc_iio_test.py
 └── README.md
