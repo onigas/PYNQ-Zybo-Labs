@@ -2,7 +2,7 @@
 
 **Platform:** Digilent Zybo Legacy (XC7Z010), PYNQ 3.0.1.
 
-> **Data publication in progress:** the original CSV, five PPM test photographs, and ARM BNN library/parameters have been recovered and verified, but their binary/data commit to `main` is still pending. Until that commit is completed, Lab08.1 and Lab08.2 require copying these resources from a previously tested Zybo installation. Lab08.3 uses its already committed offline FPGA inputs and overlay.
+> **Offline-ready resources:** the original GTSRB ground-truth CSV, five test photographs, and the pretrained ARM BNN software/parameters are committed to `main`. Clone or download the complete repository to run Lab08.1 and Lab08.2 without additional downloads.
 
 ## Published laboratory notebooks
 
@@ -37,12 +37,14 @@ Lab08/
 │   └── gtsrb.py
 ├── data/gtsrb/
 │   ├── GT-final_test.csv                     <-- 12,630 genuine test labels
-│   └── GTSRB/Final_Test/Images/
-│       ├── 00001.ppm                          <-- original test photos for ARM
-│       ├── 00003.ppm
-│       ├── 00008.ppm
-│       ├── 00093.ppm
-│       └── 00105.ppm
+│   └── GTSRB/
+│       ├── Readme-Images-Final-test.txt      <-- original dataset description
+│       └── Final_Test/Images/
+│           ├── 00001.ppm                      <-- original test photos for ARM
+│           ├── 00003.ppm
+│           ├── 00008.ppm
+│           ├── 00093.ppm
+│           └── 00105.ppm
 ├── assets/bnn_pynq_sw/
 │   ├── python_sw-cnvW1A1-pynqZ1-Z2.so        <-- original 32-bit ARM CNV software
 │   └── params/                               <-- 178 weight/threshold bins + classes.txt
