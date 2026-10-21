@@ -126,7 +126,9 @@ Lab07 includes the tested **`lab07.bit` / `lab07.hwh` FPGA overlay pair**, both 
 
 **Important:** ARM and FPGA tests use **different BNN models**, so the reported times must not be presented as a same-model speedup. Test-set sample accuracies are not overall model accuracy. The abandoned 9-layer FPGA HLS experiment is not part of Lab08. The original Zybo [FPGA validation record](Lab08/evidence/FPGA_VALIDATION.md) is included; a matching `compact_gtsrb.bit` / `.hwh` and original 20-image `.npz` are needed to rerun Lab08.3.
 
-Lab08 also includes an offline [20-sign viewer](Lab08/display/index.html) and 20 SVG illustrations in `Lab08/display/`, with an interactive viewer in the FPGA notebook. These are **schematic reference illustrations**, not the original GTSRB test photographs; webcam results may differ from offline test results.\n\n## Download and use
+Lab08 also includes an offline [20-sign viewer](Lab08/display/index.html) and 20 SVG illustrations in `Lab08/display/`, with an interactive viewer in the FPGA notebook. These are **schematic reference illustrations**, not the original GTSRB test photographs; webcam results may differ from offline test results.
+
+## Download and use
 
 1. Select **Code → Download ZIP** on the repository page.
 2. Extract the archive on your computer.
