@@ -2,6 +2,8 @@
 
 **Platform:** Digilent Zybo Legacy (XC7Z010), PYNQ 3.0.1.
 
+> **Data publication in progress:** the original CSV, five PPM test photographs, and ARM BNN library/parameters have been recovered and verified, but their binary/data commit to `main` is still pending. Until that commit is completed, Lab08.1 and Lab08.2 require copying these resources from a previously tested Zybo installation. Lab08.3 uses its already committed offline FPGA inputs and overlay.
+
 ## Published laboratory notebooks
 
 | Notebook | Experiment | Previously verified on real Zybo |
