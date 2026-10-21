@@ -25,6 +25,7 @@ Lab08/
 │   ├── Lab08.3_BNN_FPGA_Inference_GTSRB.ipynb
 │   ├── BATCH20_CELL.py
 │   └── gtsrb_batch20_inputs.npz               <-- original 20-image FPGA test
+├── display/                                  <-- 20 SVG illustrations, manifest.json, index.html
 ├── overlays/
 │   ├── compact_gtsrb.bit                      <-- original XC7Z010 overlay
 │   └── compact_gtsrb.hwh                      <-- corresponding Vivado hardware handoff
@@ -47,6 +48,12 @@ The official `GT-final_test.csv` is a semicolon-separated dataset with 12,630 im
 ## Lab08.2 — Pretrained ARM inference
 
 Open the notebook in Jupyter. Its asset download cell retrieves one original 32-bit ARM shared library and 179 parameter/label files from the pinned original BNN-PYNQ source commit `d39c1c75403db571f54dd0f0cf27ae5104ac968e` (offline ZIP procedure is provided). It then selects five official GTSRB Test images and can download the missing four photos from the official test archive. Classify one example by changing `IMAGE_INDEX` from 0 to 4; evaluate all five with the included batch cell. No FPGA is programmed in Lab08.2.
+
+## Traffic-sign display for camera experiments
+
+The [display/](display/) directory provides **20 scalable SVG traffic-sign illustrations** and an offline [interactive HTML viewer](display/index.html) with Previous/Next navigation. The same viewer is available inside `Lab08.3` through Jupyter widgets. Copy the **complete Lab08 directory**, including `display/`, to Zybo to use the notebook viewer. Open `display/index.html` on a computer or phone after downloading the folder to navigate the signs.
+
+These SVG files are **schematic reference illustrations for the 20 GTSRB classes**, not photographs from the GTSRB dataset and not the exact 20 images used in the FPGA benchmark. They are suitable for showing signs to a webcam, but real-camera inference may differ from the recorded 13/20 offline benchmark. In the camera experiment, the sign should occupy most of the centered crop; the existing camera cell classifies only one captured frame, not a continuous video stream.
 
 ## Lab08.3 — Real compact FPGA inference
 
