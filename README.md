@@ -22,6 +22,38 @@ This repository was tested with the following PYNQ 3.0.1 image for the Digilent 
 
 Write the image to the SD card using a raw disk imaging tool such as Win32 Disk Imager.
 
+## Download and install the laboratories
+
+### Method A — Download ZIP
+
+1. On [GitHub](https://github.com/onigas/PYNQ-Zybo-Labs), select **Code → Download ZIP**.
+2. Upload `PYNQ-Zybo-Labs-main.zip` to `/home/xilinx/jupyter_notebooks/` using the Zybo Jupyter interface.
+3. Open a Jupyter terminal and run:
+
+```bash
+cd /home/xilinx/jupyter_notebooks
+unzip -q PYNQ-Zybo-Labs-main.zip
+mv PYNQ-Zybo-Labs-main PYNQ-Zybo-Labs
+```
+
+### Method B — Clone with Git
+
+Open a Jupyter terminal and run:
+
+```bash
+cd /home/xilinx/jupyter_notebooks
+git clone https://github.com/onigas/PYNQ-Zybo-Labs.git
+```
+
+### Update an existing repository
+
+```bash
+cd /home/xilinx/jupyter_notebooks/PYNQ-Zybo-Labs
+git pull origin main
+```
+
+**Note:** Before updating, save any locally modified files. Git may refuse to pull if local changes conflict with repository updates.
+
 ## Laboratory notebooks
 
 ### Lab 0 — Getting Started with PYNQ
@@ -127,16 +159,6 @@ Lab07 includes the tested **`lab07.bit` / `lab07.hwh` FPGA overlay pair**, both 
 **Important:** ARM and FPGA tests use **different BNN models**, so the reported times must not be presented as a same-model speedup. Test-set sample accuracies are not overall model accuracy. The abandoned 9-layer FPGA HLS experiment is not part of Lab08. The original Zybo [FPGA validation record](Lab08/evidence/FPGA_VALIDATION.md) is included; a matching `compact_gtsrb.bit` / `.hwh` and original 20-image `.npz` are needed to rerun Lab08.3.
 
 Lab08 also includes an offline [20-sign viewer](Lab08/display/index.html) and 20 SVG illustrations in `Lab08/display/`, with an interactive viewer in the FPGA notebook. These are **schematic reference illustrations**, not the original GTSRB test photographs; webcam results may differ from offline test results.
-
-## Download and use
-
-1. Select **Code → Download ZIP** on the repository page.
-2. Extract the archive on your computer.
-3. In the Zybo Jupyter interface, create or open a working directory.
-4. Upload the required `.ipynb` files.
-5. Open the notebooks and complete them in numerical order.
-
-Some exercises contain continuous loops or background worker processes. Use **Kernel → Interrupt** in Jupyter when instructed to stop execution. Always leave the on-board LEDs switched off after an interrupted GPIO experiment.
 
 ## Repository structure
 
