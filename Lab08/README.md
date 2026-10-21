@@ -51,9 +51,9 @@ Open the notebook in Jupyter. Its asset download cell retrieves one original 32-
 
 ## Traffic-sign display for camera experiments
 
-The [display/](display/) directory provides **20 scalable SVG traffic-sign illustrations** and an offline [interactive HTML viewer](display/index.html) with Previous/Next navigation. The same viewer is available inside `Lab08.3` through Jupyter widgets. Copy the **complete Lab08 directory**, including `display/`, to Zybo to use the notebook viewer. Open `display/index.html` on a computer or phone after downloading the folder to navigate the signs.
+The [display/](display/) directory provides **20 scalable SVG traffic-sign illustrations** and an offline [interactive HTML viewer](display/index.html) with Previous/Next navigation. The notebook `Lab08.3` provides a Jupyter viewer alongside a **Capture & classify** button: select a sign, capture a new Logitech C270 frame, and display the FPGA classification and time next to the reference. Repeated captures do not require rerunning the cell. Copy the **complete Lab08 directory**, including `display/`, to Zybo to use the notebook viewer. Open `display/index.html` on a computer or phone after downloading the folder to navigate the signs.
 
-These SVG files are **schematic reference illustrations for the 20 GTSRB classes**, not photographs from the GTSRB dataset and not the exact 20 images used in the FPGA benchmark. They are suitable for showing signs to a webcam, but real-camera inference may differ from the recorded 13/20 offline benchmark. In the camera experiment, the sign should occupy most of the centered crop; the existing camera cell classifies only one captured frame, not a continuous video stream.
+These SVG files are **schematic reference illustrations for the 20 GTSRB classes**, not photographs from the GTSRB dataset and not the exact 20 images used in the FPGA benchmark. They are suitable for showing signs to a webcam, but real-camera inference may differ from the recorded 13/20 offline benchmark. In the camera experiment, the sign should occupy most of the centered crop. Each click captures one new frame; this is not a continuous video stream.
 
 ## Lab08.3 — Real compact FPGA inference
 
