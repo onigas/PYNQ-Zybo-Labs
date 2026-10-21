@@ -1,6 +1,18 @@
-# Data and binary artifacts downloaded during Lab08 execution
-/assets/
-/data/gtsrb/
+# Lab08: retain reproducible GTSRB data and pretrained ARM BNN artifacts in Git.
+# The original five test photographs, ground-truth CSV, software library and
+# official pretrained weights are intentionally tracked.
+
+# Generated files and full-size archives (not teaching inputs)
+/assets/bnn_pynq_sw/test_*.cifar
+/assets/*.zip
+/assets/*.part
+/data/archives/
+/data/gtsrb/**/*.zip
+/models/
+/results/
+/hardware/out_z7010/
+
+# Jupyter and Python caches
 **/.ipynb_checkpoints/
 **/__pycache__/
 *.pyc
