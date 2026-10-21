@@ -33,7 +33,7 @@ Lab08/
 ├── tools/
 │   └── gtsrb.py
 └── data/gtsrb/
-    ├── GT-final_test.csv                     <-- official GTSRB ground truth
+    ├── GT-final_test.csv                     <-- used by Lab08.1; not needed for 08.3
     └── GTSRB/Final_Test/Images/
         └── 00105.ppm                          <-- official GTSRB test image
 ```
@@ -50,9 +50,9 @@ Open the notebook in Jupyter. Its asset download cell retrieves one original 32-
 
 ## Lab08.3 — Real compact FPGA inference
 
-The original tested code uses `pynq.Overlay`, `allocate`, `axi_dma_0`, and two DMA buffers. The **first code cell programs the FPGA** with `compact_gtsrb.bit`. The single-image test uses the same `00105.ppm` and CSV as Lab08.1. The 20-image test calls the saved [BATCH20_CELL.py](notebooks/BATCH20_CELL.py) and reads `notebooks/gtsrb_batch20_inputs.npz`. The optional camera cell captures one frame from the Logitech C270.
+The original tested code uses `pynq.Overlay`, `allocate`, `axi_dma_0`, and two DMA buffers. The **first code cell programs the FPGA** with `compact_gtsrb.bit`. The single-image test selects a labeled image from the bundled `notebooks/gtsrb_batch20_inputs.npz` archive and does not require an internet connection, the official CSV, or external photographs. The 20-image test calls [BATCH20_CELL.py](notebooks/BATCH20_CELL.py) using the same archive. The optional camera cell captures one frame from the Logitech C270.
 
-The source has been renumbered and published with a documented record of the prior successful tests; the published notebook has *not* been rerun on the physical board since renumbering. No hardware, FPGA inference function or previously tested image bytes have been intentionally altered. Full Vivado build sources for this compact bitstream have not been recovered.
+The published notebook's single-image section uses the same bundled preprocessed inputs as the 20-image test to avoid network requirements. This revised section has not yet been rerun on the physical board. No hardware, FPGA inference function or previously tested image bytes have been intentionally altered. Full Vivado build sources for this compact bitstream have not been recovered.
 
 **Prior verified result details:** [FPGA_VALIDATION.md](evidence/FPGA_VALIDATION.md).
 
