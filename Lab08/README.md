@@ -33,21 +33,30 @@ Lab08/
 │   └── FPGA_VALIDATION.md                     <-- saved results from the original Zybo run
 ├── tools/
 │   └── gtsrb.py
-└── data/gtsrb/
-    ├── GT-final_test.csv                     <-- used by Lab08.1; not needed for 08.3
-    └── GTSRB/Final_Test/Images/
-        └── 00105.ppm                          <-- official GTSRB test image
+├── data/gtsrb/
+│   ├── GT-final_test.csv                     <-- 12,630 genuine test labels
+│   └── GTSRB/Final_Test/Images/
+│       ├── 00001.ppm                          <-- original test photos for ARM
+│       ├── 00003.ppm
+│       ├── 00008.ppm
+│       ├── 00093.ppm
+│       └── 00105.ppm
+├── assets/bnn_pynq_sw/
+│   ├── python_sw-cnvW1A1-pynqZ1-Z2.so        <-- original 32-bit ARM CNV software
+│   └── params/                               <-- 178 weight/threshold bins + classes.txt
+├── hardware/                                 <-- preserved experimental FINN Z7010 configs
+└── research/tools/                           <-- archived source utilities, not current notebook API
 ```
 
 **Binary artifact status:** all three original files are committed to `main`: [`compact_gtsrb.bit`](overlays/compact_gtsrb.bit), [`compact_gtsrb.hwh`](overlays/compact_gtsrb.hwh), and [`gtsrb_batch20_inputs.npz`](notebooks/gtsrb_batch20_inputs.npz). Their sizes and reference SHA-256 checksums are listed in [evidence/FPGA_VALIDATION.md](evidence/FPGA_VALIDATION.md). Download the complete repository to preserve the directory structure. **Never replace the FPGA bitstream with the abandoned full-CNV project's output.**
 
 ## Lab08.1 — Prepare GTSRB data
 
-The official `GT-final_test.csv` is a semicolon-separated dataset with 12,630 image labels. Download it together with `00105.ppm` from the [original GTSRB dataset](https://benchmark.ini.rub.de/gtsrb_dataset.html) and copy both to the locations shown. If the board already has the data from earlier experiments, reuse it. The notebooks do not require copying every one of the 12,630 photographs.
+The original `GT-final_test.csv` is a semicolon-separated file containing 12,630 image labels. The five real test photographs used by the ARM experiment are `00105.ppm`, `00093.ppm`, `00001.ppm`, `00008.ppm` and `00003.ppm`. They come from the official [GTSRB dataset](https://benchmark.ini.rub.de/gtsrb_dataset.html) and correspond to five different classes. The teaching notebooks require only these five photographs, **not** the complete 12,630-image archive.
 
 ## Lab08.2 — Pretrained ARM inference
 
-Open the notebook in Jupyter. Its asset download cell retrieves one original 32-bit ARM shared library and 179 parameter/label files from the pinned original BNN-PYNQ source commit `d39c1c75403db571f54dd0f0cf27ae5104ac968e` (offline ZIP procedure is provided). It then selects five official GTSRB Test images and can download the missing four photos from the official test archive. Classify one example by changing `IMAGE_INDEX` from 0 to 4; evaluate all five with the included batch cell. No FPGA is programmed in Lab08.2.
+Open the notebook in Jupyter. The original 32-bit ARM shared library, 178 trained binary parameter files and `classes.txt` belong in `assets/bnn_pynq_sw/`. Their source is the pinned BNN-PYNQ commit `d39c1c75403db571f54dd0f0cf27ae5104ac968e`. The notebook now defaults to **offline operation**, with `DOWNLOAD_ASSETS = False` and `DOWNLOAD_MISSING_IMAGES = False`. Enable one of the recovery options only if the relevant original files are missing. Classify a selected photograph by changing `IMAGE_INDEX` from 0 to 4, or test all five. No FPGA is programmed in Lab08.2.
 
 ## Traffic-sign display for camera experiments
 
@@ -70,3 +79,9 @@ The published notebook's single-image section uses the same bundled preprocessed
 - The reported 23.15 ms/image is Python + cache + DMA + FPGA end-to-end time, not hardware core latency.
 - On camera: one inference was obtained, not a verified correctly recognized sign.
 - No FINN/QONNX development environment is required to **run** these experiments on Zybo.
+
+## Preserved development and research materials
+
+- [hardware/](hardware/) preserves the original XC7Z010 FINN feasibility script, folding configuration and HLS/RTL specialization preferences. These files are **experimental and unvalidated**, not the bitstream or synthesis project used in the successful compact FPGA demonstration. They are retained for possible future development.
+- [research/](research/) preserves six exact original GTSRB helper scripts for dataset download, full-set QONNX evaluation, stratified sampling, HSV candidate detection, prediction visualization and smoke tests. They are intentionally separate from the current `tools/gtsrb.py` because the historical helper uses a different interface.
+- The official GTSRB CSV and five teaching images, and the original BNN-PYNQ ARM software library and trained parameters, are recovery artifacts extracted from a previously tested Zybo installation. Do **not** substitute newly generated weights, unrelated traffic-sign images, or the failed full-CNV hardware design.
