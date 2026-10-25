@@ -3,7 +3,7 @@
 **Repository:** PYNQ-Zybo-Labs  
 **Target platforms:** Digilent Zybo Legacy / Digilent PYNQ-Z2 (as indicated)  
 **Suggested duration:** 4–5 weeks  
-**Development:** Vivado 2022.2, RTL/IP/HLS, PS software in Python or C/C++
+**Development:** PYNQ Python / Jupyter notebooks; existing precompiled FPGA overlays
 
 The **13 selected proposals** are listed below. Click a project title to open its individual assignment. The original HW identifiers have been retained (HW-08 was not selected).
 
@@ -25,45 +25,42 @@ The **13 selected proposals** are listed below. Click a project title to open it
 
 ## General Project Guidelines
 
-The aim is to practice **hardware–software co-design**: the Processing System (PS, ARM) runs a software application, while the Programmable Logic (PL, FPGA) implements a specific processing function. A Python notebook alone, or an HDL-only design without PS control/data exchange, does not satisfy the assignment.
+Students write **only Python/Jupyter notebooks**, using existing Lab06–Lab08 overlays or compatible public downloadable overlays. No RTL, HLS, Vivado, IP generation or new bitstream generation is part of the assignment.
 
-Students **may reproduce and adapt open-source reference projects**. The contribution must be explained, the solution demonstrated, and all sources credited. A prebuilt overlay is acceptable as a starting point, but students must document its architecture and show what they configured, modified or extended.
+Every notebook must demonstrate a real PL operation, document the selected board and the matching .bit/.hwh files, explain the ARM–FPGA interaction, compare results to software, and show practical outputs. If a compatible ready-made overlay is not found, the project is **conditional** and cannot yet be allocated as a co-design FPGA project.
 
-Each project should include:
+### Public overlay examples
 
-- A block diagram showing PS, PL, AXI communication and data paths.
-- A software component (Python/PYNQ or C/C++) and a functional FPGA accelerator.
-- An operational demonstration on **the board listed for the project**.
-- Functional verification against a software reference, with at least one representative input/output example.
-- Resource utilization and a performance discussion including data-transfer overhead where relevant.
-- Documentation listing the required equipment, software versions, third-party code and adaptations.
+- [Lab06 MAC overlay](../Lab06/README.md) — Zybo Legacy
+- [Lab07 DMA threshold overlay](../Lab07/README.md) — Zybo Legacy
+- [Lab08 BNN overlay](../Lab08/README.md) — Zybo Legacy
+- [PYNQ-Z2 FIR with notebook and precompiled .bit/.hwh](https://github.com/prnjl10/dma-fir-accelerator-pynq-z2) — public external example
+- [PYNQ Workshop](https://github.com/Xilinx/PYNQ_Workshop) — additional notebooks and overlay concepts
 
-**Platform note:** Zybo Legacy and PYNQ-Z2 are both Zynq-7000-based but have different board constraints, interfaces and overlay support. Board applicability in the table indicates a **feasible implementation target**, not an already-tested bitstream. Existing Zybo overlays in this repository must not be assumed to work unchanged on PYNQ-Z2.
+Other topics (DDS, FFT, configurable convolution, RLE, QRS) require verifying a precompiled compatible overlay **before** project assignment.
 
 ## Recommended Project Schedule
 
-| Week | Activities | Expected Deliverables |
+| Week | Activities | Deliverable |
 | --- | --- | --- |
-| 1 | Study references, define a reproducible demonstration, identify PS/PL tasks and interfaces. | Requirements, hardware/software block diagram, implementation plan |
-| 2 | Implement/adapt accelerator RTL/HLS/IP and develop the PS reference application. | Hardware sources, software reference, preliminary verification |
-| 3 | Integrate AXI register/DMA communication, build overlay and run on board. | First operational PS–PL prototype |
-| 4 | Validate functional outputs, debug integration and measure resources/timing. | Hardware demonstration, correctness and performance results |
-| 5 | Add a useful extension, finalize report and present the project. | Source repository, report and live demonstration |
-
-For a four-week assignment, combine the final verification and presentation stages.
+| 1 | Obtain and verify the overlay, then reproduce the original notebook. | Working baseline |
+| 2 | Develop Python controls, test data and explanations. | Improved notebook |
+| 3 | Add plots, interactivity and meaningful experiments. | Practical demonstrations |
+| 4 | Validate results against software, measure execution and transfer time. | Verified results |
+| 5 | Complete documentation and present the notebook. | Final submission |
 
 ## Evaluation Criteria
 
 | Criterion | Weight |
 | --- | ---: |
-| Functional PS–PL implementation and FPGA demonstration | 35% |
-| Understanding and explanation of hardware/software partitioning and architecture | 25% |
-| Verification and performance/resource evaluation | 15% |
-| Technical documentation and reproducibility | 15% |
-| Adaptations and useful extensions | 10% |
+| Functional notebook and demonstrated FPGA overlay use | 35% |
+| Explanation of PS–PL operation | 25% |
+| Correctness, test cases and useful comparisons | 15% |
+| Documentation and reproducibility | 15% |
+| Python notebook improvements and interactivity | 10% |
 | **Total** | **100%** |
 
-Maximum grades on a **1–5 scale** will be determined after each detailed project specification is reviewed. The percentage rubric assesses the quality of the selected project; reproducing reference code without understanding does not automatically earn the maximum grade.
+Maximum grades on the **1–5 scale** will be agreed after feasibility and complexity checks.
 
 ## Main Sources and Background
 
