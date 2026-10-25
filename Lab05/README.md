@@ -34,3 +34,13 @@ The test images are idealized and axis-aligned. Performance on real signs under 
 ## Reading the notebooks
 
 Every code cell is preceded by a short description of its purpose. Lab05.2 and Lab05.3 also display intermediate masks, candidate contours and detected shapes, so students can follow the pipeline before the final output. Some function-definition cells do not themselves produce figures; execute the next visual checkpoint to inspect their results.
+
+## Reproduction and Notebook Extension
+
+**Existing starting point:** [Lab05.1–Lab05.3 traffic-sign notebooks](README.md).
+
+**Reproduce:** Reproduce the reference segmentation, contour selection and rule-based sign recognition on the provided images.
+
+**Suggested notebook-only extension:** Evaluate additional supplied scenes, show at least two false detections or limitations and adjust existing threshold parameters from notebook widgets.
+
+**Implementation boundary:** Pure ARM/OpenCV experiment: no FPGA accelerator is used or implied. Students do not need to use Vivado, create HDL/HLS, or regenerate overlays.

@@ -230,3 +230,13 @@ Save the notebook and download a copy to the PC for submission. Keep its execute
 Figures 1 and 3 are original teaching diagrams. Figures 2 and 4 are reproduced from the linked official documentation and retain their upstream attribution. They illustrate the reference board and a general JupyterLab interface, rather than the exact course Zybo installation.
 
 The two official documentation images are linked online. The original diagrams are included in `images/`; keep that folder beside this README.
+
+## Reproduction and Notebook Extension
+
+**Existing starting point:** [Lab 0 course guide](README.md).
+
+**Reproduce:** Reproduce access to the board and the first notebook, then explain PS, PL, and the purpose of the existing base overlay.
+
+**Suggested notebook-only extension:** Add a short, documented system inventory cell (PYNQ version, Python version, board connection), and explain why merely running Python does not demonstrate an FPGA accelerator.
+
+**Implementation boundary:** PS/Linux/Jupyter orientation, not hardware acceleration. Students do not need to use Vivado, create HDL/HLS, or regenerate overlays.

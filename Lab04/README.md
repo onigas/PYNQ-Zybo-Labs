@@ -44,3 +44,13 @@ The acquisition helper opens `/dev/video0` through `cv2.CAP_V4L2`, requests 640 
 ## Verification
 
 The camera, color detection thresholds and outputs were tested experimentally in the earlier iterative work. Lab04.1–Lab04.4 were reported working on Zybo. Lab04.5 was approved for publication after the user's test feedback.
+
+## Reproduction and Notebook Extension
+
+**Existing starting point:** [Lab04.1–Lab04.5 camera and vision notebooks](README.md).
+
+**Reproduce:** Reproduce C270 webcam acquisition, HSV color masking, tracking and LED feedback.
+
+**Suggested notebook-only extension:** Add a documented tracking experiment across two lighting conditions with controls for HSV thresholds and a comparison of detection results.
+
+**Implementation boundary:** OpenCV processing executes on ARM; the existing overlay is used for GPIO output only. Students do not need to use Vivado, create HDL/HLS, or regenerate overlays.

@@ -89,3 +89,13 @@ The published notebook's single-image section uses the same bundled preprocessed
 - [hardware/](hardware/) preserves the original XC7Z010 FINN feasibility script, folding configuration and HLS/RTL specialization preferences. These files are **experimental and unvalidated**, not the bitstream or synthesis project used in the successful compact FPGA demonstration. They are retained for possible future development.
 - [research/](research/) preserves six exact original GTSRB helper scripts for dataset download, full-set QONNX evaluation, stratified sampling, HSV candidate detection, prediction visualization and smoke tests. They are intentionally separate from the current `tools/gtsrb.py` because the historical helper uses a different interface.
 - The official GTSRB CSV and five teaching images, and the original BNN-PYNQ ARM software library and trained parameters, are recovery artifacts extracted from a previously tested Zybo installation. Do **not** substitute newly generated weights, unrelated traffic-sign images, or the failed full-CNV hardware design.
+
+## Reproduction and Notebook Extension
+
+**Existing starting point:** [Lab08.1 dataset](notebooks/Lab08.1_GTSRB_Real_Dataset.ipynb), [Lab08.2 ARM BNN](notebooks/Lab08.2_BNN_PYNQ_ARM_Inference.ipynb), [Lab08.3 FPGA BNN](notebooks/Lab08.3_BNN_FPGA_Inference_GTSRB.ipynb).
+
+**Reproduce:** Reproduce the provided GTSRB dataset and ARM inference; run the FPGA notebook only with the matching compact FPGA `.bit`/`.hwh` and necessary input assets.
+
+**Suggested notebook-only extension:** Add an annotated result panel for several traffic-sign images, displaying predicted class, ground truth and selected-sample success/failure; explain the model differences.
+
+**Implementation boundary:** ARM and FPGA notebooks use different BNN models; no same-model speedup or generalization of sample accuracy is justified. Students do not need to use Vivado, create HDL/HLS, or regenerate overlays.

@@ -47,3 +47,13 @@ The instructor reported successful execution on actual Zybo legacy hardware of 0
 A host-call measurement includes Python, contiguous buffers, DDR, the DMA transaction and returned results, not just the comparator delay. Also note that only the saturation threshold is computed in FPGA in the final webcam example; HSV conversion, hue filtering, morphology and contours remain on ARM.
 
 **Publication complete:** All three notebooks, both reference images, the matching prebuilt `lab07.bit` / `lab07.hwh` pair, RTL sources, testbench, Vivado build script and AXI DMA driver are published in this repository. The binary files and PNG images were compared with the validated release archive and match byte for byte (Git blob identifiers). Students do not need Vivado to execute the notebooks.
+
+## Reproduction and Notebook Extension
+
+**Existing starting point:** [Lab07.2 DMA thresholding](notebooks/Lab07.2_AXIDMA_Threshold_Accelerator.ipynb) and [Lab07.3 real-image benchmarking](notebooks/Lab07.3_Real_Images_and_Benchmark.ipynb).
+
+**Reproduce:** Reproduce image transfers through the published `lab07.bit`/`.hwh` pair and verify resulting threshold masks against NumPy.
+
+**Suggested notebook-only extension:** Run thresholding on two different images with three selected threshold values; compare pixel-level differences and total transfer time. A cumulative histogram analysis is an optional notebook experiment.
+
+**Implementation boundary:** The accelerator implements thresholding, not generic convolution or histogram calculation. Students do not need to use Vivado, create HDL/HLS, or regenerate overlays.

@@ -70,3 +70,13 @@ At the configured **100 MHz**, 100,000 hardware cycles correspond to **1 ms of i
 - Original MAC: 100/100 additional randomized tests passed.
 - Batch MAC: correct functional output and performance measurements reported from the physical Zybo.
 - Both published bitstreams match the instructor-provided files; Vivado implementation timing reports (WNS) have not been independently inspected. Verify timing closure if rebuilding or modifying the RTL.
+
+## Reproduction and Notebook Extension
+
+**Existing starting point:** [Lab06.3 MAC](notebooks/Lab06.3_Custom_Hardware_Accelerator.ipynb) and [Lab06.4 batch benchmark](notebooks/Lab06.4_ARM_vs_FPGA_Performance.ipynb).
+
+**Reproduce:** Run the already published and Zybo-verified `lab06.bit` and `lab06_batch.bit` with their matching `.hwh` metadata.
+
+**Suggested notebook-only extension:** Use the expanded [HW-01 sensor calibration assignment](../Projects/Details/HW-01.md) as an optional notebook extension; compare repeated single MAC calls against Python/NumPy for a real application.
+
+**Implementation boundary:** The batch core generates its operands internally; do not claim that it processes arbitrary Python arrays. Benchmarks against a Python loop are not benchmarks against optimized C. Students do not need to use Vivado, create HDL/HLS, or regenerate overlays.

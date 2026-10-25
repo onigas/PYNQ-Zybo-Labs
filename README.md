@@ -58,6 +58,12 @@ git pull origin main
 
 [Hardware–Software Co-design — project proposals (13 topics)](Projects/README.md)
 
+## Laboratory Reproduction and Extensions
+
+The laboratory material in Lab0–Lab08 uses existing notebooks and, where required, **already published overlays**. Students reproduce the existing experiment, explain each important step and may extend the Python notebook. They are not required to create new hardware, synthesize RTL/HLS or generate bitstreams. Each laboratory README provides a reproducible starting point and a suggested notebook-only extension.
+
+**Important distinction:** Lab01–Lab05 chiefly exercise PS-side Python, GPIO or OpenCV (with the relevant existing device interfaces). Lab06–Lab08 additionally include specific prebuilt PL accelerators. Do not describe PS-only experiments as FPGA-accelerated, and do not assume that bitstreams for Zybo Legacy load unchanged on PYNQ-Z2.
+
 ## Laboratory notebooks
 
 ### Lab 0 — Getting Started with PYNQ
