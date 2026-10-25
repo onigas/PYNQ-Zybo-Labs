@@ -9,7 +9,7 @@ The **13 project ideas** are listed below. Each detailed page prioritizes a **sp
 
 | Code | Project title | Implementation board |
 | --- | --- | --- |
-| HW-01 | [Programmable Arithmetic Accelerator](Details/HW-01.md) | Zybo Legacy / PYNQ-Z2 |
+| HW-01 | [FPGA-Based Sensor Calibration and Arithmetic Processing](Details/HW-01.md) | Zybo Legacy |
 | HW-02 | [DDS Waveform Generator](Details/HW-02.md) | Zybo Legacy / PYNQ-Z2 |
 | HW-03 | [FIR Filter Accelerator](Details/HW-03.md) | Zybo Legacy / PYNQ-Z2 |
 | HW-04 | [FFT Spectrum Analyzer Accelerator](Details/HW-04.md) | Zybo Legacy / PYNQ-Z2 |
