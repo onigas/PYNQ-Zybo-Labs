@@ -12,7 +12,7 @@ The **13 project ideas** are listed below. Each detailed page prioritizes a **sp
 | HW-01 | [FPGA-Based Sensor Calibration and Arithmetic Processing](Details/HW-01.md) | Zybo Legacy |
 | HW-02 | [Programmable Digital Waveform Generator Using Logictools](Details/HW-02.md) | PYNQ-Z2 |
 | HW-03 | [FIR Filter Accelerator](Details/HW-03.md) | PYNQ-Z2 |
-| HW-04 | [FFT Spectrum Analyzer Accelerator](Details/HW-04.md) | Zybo Legacy / PYNQ-Z2 |
+| HW-04 | [FFT Accelerator — Adam Taylor MZ448](Details/HW-04.md) | PYNQ-Z2 (compatibility check required) |
 | HW-05 | [PS-Controlled Audio Processing](Details/HW-05.md) | PYNQ-Z2 preferred; Zybo Legacy if audio interface verified |
 | HW-06 | [Sobel Edge Detection Accelerator](Details/HW-06.md) | Zybo Legacy / PYNQ-Z2 |
 | HW-07 | [Programmable 2D Convolution Accelerator](Details/HW-07.md) | Zybo Legacy / PYNQ-Z2 |
@@ -35,7 +35,7 @@ The **13 project ideas** are listed below. Each detailed page prioritizes a **sp
 | HW-01 | [Lab06 complete MAC accelerator and notebooks](../../Lab06/README.md) | Existing course implementation |
 | HW-02 | [Adam Taylor — Signal Generation and Logic Tracing](https://medium.com/@aptaylorceng/pynq-edition-signal-generation-and-logic-tracing-599c62891bc3) | Official PYNQ-Z2 Logictools overlay; reproduce Pattern Generator + Trace Analyzer |
 | HW-03 | [soheilbh/fir_accel_pynq — complete repository](https://github.com/soheilbh/fir_accel_pynq) | Concrete public reproductions available for PYNQ-Z2 |
-| HW-04 | [Existing course DMA workflow — Lab07](../../Lab07/README.md) | Complete public FFT notebook plus precompiled overlay not yet verified |
+| HW-04 | [Adam Taylor MZ448 — fft.ipynb, fft.bit, fft.hwh](https://github.com/ATaylorCEngFIET/MZ448/tree/master/Overlay/dsp_class) | Complete source found; test overlay on PYNQ-Z2 before allocation |
 | HW-05 | [PYNQ official documentation](https://pynq.readthedocs.io/) | Ready-made board-specific audio notebook and overlay not yet verified |
 | HW-06 | [Sobel Edge Detection and Image Compositing — complete project](https://github.com/Adhiraj4/Sobel-Edge-detection-and-inference-based-Image-Compositing-using-Vitis-HLS-for-Pynq-Z2-FPGA) | Concrete PYNQ-Z2 Sobel project with notebook and precompiled overlay |
 | HW-07 | [Pieter Berteloot — Sharpening project](https://github.com/Pieter-Berteloot/PYNQ_Projects/tree/master/Sharpening) | A specific example exists, but programmable coefficient support is unverified |
