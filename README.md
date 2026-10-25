@@ -54,6 +54,10 @@ git pull origin main
 
 **Note:** Before updating, save any locally modified files. Git may refuse to pull if local changes conflict with repository updates.
 
+## Student projects
+
+[Hardware–Software Co-design — project proposals (13 topics)](Projects/README.md)
+
 ## Laboratory notebooks
 
 ### Lab 0 — Getting Started with PYNQ
