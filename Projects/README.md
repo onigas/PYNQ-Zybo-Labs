@@ -10,8 +10,8 @@ The **13 project ideas** are listed below. Each detailed page prioritizes a **sp
 | Code | Project title | Implementation board |
 | --- | --- | --- |
 | HW-01 | [FPGA-Based Sensor Calibration and Arithmetic Processing](Details/HW-01.md) | Zybo Legacy |
-| HW-02 | [DDS Waveform Generator](Details/HW-02.md) | Zybo Legacy / PYNQ-Z2 |
-| HW-03 | [FIR Filter Accelerator](Details/HW-03.md) | Zybo Legacy / PYNQ-Z2 |
+| HW-02 | [Programmable Digital Waveform Generator Using Logictools](Details/HW-02.md) | PYNQ-Z2 |
+| HW-03 | [FIR Filter Accelerator](Details/HW-03.md) | PYNQ-Z2 |
 | HW-04 | [FFT Spectrum Analyzer Accelerator](Details/HW-04.md) | Zybo Legacy / PYNQ-Z2 |
 | HW-05 | [PS-Controlled Audio Processing](Details/HW-05.md) | PYNQ-Z2 preferred; Zybo Legacy if audio interface verified |
 | HW-06 | [Sobel Edge Detection Accelerator](Details/HW-06.md) | Zybo Legacy / PYNQ-Z2 |
@@ -33,7 +33,7 @@ The **13 project ideas** are listed below. Each detailed page prioritizes a **sp
 | HW-13 | [Lab07 — example of PS/PL DMA data transfer](../../Lab07/README.md) | No complete public RLE notebook with compatible bit/hwh confirmed |
 | HW-14 | [Course Lab03 XADC and data logging](../../Lab03/README.md) | No complete public QRS-processing notebook with compatible overlay confirmed |
 | HW-01 | [Lab06 complete MAC accelerator and notebooks](../../Lab06/README.md) | Existing course implementation |
-| HW-02 | [PYNQ-Zybo Lab02 — software PWM examples](../../Lab02/) | No verified complete public DDS notebook plus board-ready overlay |
+| HW-02 | [Adam Taylor — Signal Generation and Logic Tracing](https://medium.com/@aptaylorceng/pynq-edition-signal-generation-and-logic-tracing-599c62891bc3) | Official PYNQ-Z2 Logictools overlay; reproduce Pattern Generator + Trace Analyzer |
 | HW-03 | [soheilbh/fir_accel_pynq — complete repository](https://github.com/soheilbh/fir_accel_pynq) | Concrete public reproductions available for PYNQ-Z2 |
 | HW-04 | [Existing course DMA workflow — Lab07](../../Lab07/README.md) | Complete public FFT notebook plus precompiled overlay not yet verified |
 | HW-05 | [PYNQ official documentation](https://pynq.readthedocs.io/) | Ready-made board-specific audio notebook and overlay not yet verified |
