@@ -7,21 +7,25 @@
 
 The **13 project ideas** are listed below. Each detailed page prioritizes a **specific existing implementation with a direct source link**, to be reproduced and explained. Projects lacking a confirmed notebook and compatible precompiled overlay are **not yet ready for allocation**.
 
-| Code | Project title | Implementation board |
-| --- | --- | --- |
-| HW-01 | [FPGA-Based Sensor Calibration and Arithmetic Processing](Details/HW-01.md) | Zybo Legacy |
-| HW-02 | [Programmable Digital Waveform Generator Using Logictools](Details/HW-02.md) | PYNQ-Z2 |
-| HW-03 | [FIR Filter Accelerator](Details/HW-03.md) | PYNQ-Z2 |
-| HW-04 | [FFT Accelerator — Adam Taylor MZ448](Details/HW-04.md) | PYNQ-Z2 (compatibility check required) |
-| HW-05 | [PS-Controlled Audio Processing](Details/HW-05.md) | PYNQ-Z2 preferred; Zybo Legacy if audio interface verified |
-| HW-06 | [Sobel Edge Detection Accelerator](Details/HW-06.md) | Zybo Legacy / PYNQ-Z2 |
-| HW-07 | [Programmable 2D Convolution Accelerator](Details/HW-07.md) | Zybo Legacy / PYNQ-Z2 |
-| HW-09 | [FPGA Sensor Data Preprocessing](Details/HW-09.md) | Zybo Legacy / PYNQ-Z2; external sensor optional |
-| HW-10 | [Real-Time Signal Anomaly Detector](Details/HW-10.md) | Zybo Legacy / PYNQ-Z2 |
-| HW-11 | [Matrix Operations Accelerator](Details/HW-11.md) | Zybo Legacy / PYNQ-Z2 |
-| HW-12 | [Image Histogram Accelerator](Details/HW-12.md) | Zybo Legacy / PYNQ-Z2 |
-| HW-13 | [Run-Length Encoding Compression Accelerator](Details/HW-13.md) | Zybo Legacy / PYNQ-Z2 |
-| HW-14 | [ECG QRS Detection Accelerator](Details/HW-14.md) | Zybo Legacy / PYNQ-Z2 |
+| Code | Project title | Board | SW/HW comparison |
+| --- | --- | --- | --- |
+| HW-01 | [FPGA-Based Sensor Calibration and Arithmetic Processing](Details/HW-01.md) | Zybo Legacy Possible |
+| HW-02 | [Programmable Digital Waveform Generator Using Logictools](Details/HW-02.md) | PYNQ-Z2 To be verified |
+| HW-03 | [FIR Filter Accelerator](Details/HW-03.md) | PYNQ-Z2 Possible |
+| HW-04 | [FFT Accelerator — Adam Taylor MZ448](Details/HW-04.md) | PYNQ-Z2 To be verified |
+| HW-05 | [PS-Controlled Audio Processing](Details/HW-05.md) | PYNQ-Z2 / Zybo Legacy Not yet possible |
+| HW-06 | [Sobel Edge Detection Accelerator](Details/HW-06.md) | Zybo Legacy / PYNQ-Z2 Possible |
+| HW-07 | [Programmable 2D Convolution Accelerator](Details/HW-07.md) | Zybo Legacy / PYNQ-Z2 To be verified |
+| HW-09 | [FPGA Sensor Data Preprocessing](Details/HW-09.md) | Zybo Legacy / PYNQ-Z2 To be verified |
+| HW-10 | [Real-Time Signal Anomaly Detector](Details/HW-10.md) | Zybo Legacy / PYNQ-Z2 Not yet possible |
+| HW-11 | [Matrix Operations Accelerator](Details/HW-11.md) | Zybo Legacy / PYNQ-Z2 Possible |
+| HW-12 | [Image Histogram Accelerator](Details/HW-12.md) | Zybo Legacy / PYNQ-Z2 Possible |
+| HW-13 | [Run-Length Encoding Compression Accelerator](Details/HW-13.md) | Zybo Legacy / PYNQ-Z2 Not yet possible |
+| HW-14 | [ECG QRS Detection Accelerator](Details/HW-14.md) | Zybo Legacy / PYNQ-Z2 Not yet possible |
+
+**SW/HW comparison:** **Possible** — a comparison can be defined using the identified implementation (not a claim of measured speedup or board compatibility); **To be verified** — compatibility or the comparison method still needs checking; **Not yet possible** — no matching accelerator implementation is currently confirmed. Board-specific conditions remain in the detailed project pages.
+
+For HW-11, use repeated single-MAC calls for matrix–vector operations; batch MAC does not accept arbitrary matrices. For HW-12, compare the complete hybrid histogram workflow (FPGA thresholding plus ARM processing), not a single threshold operation.
 
 ## Source Verification Status
 
@@ -46,6 +50,10 @@ The **13 project ideas** are listed below. Each detailed page prioritizes a **sp
 Students primarily **reproduce, explain and extend an existing working project**, using its notebook and precompiled overlay. They write Python/Jupyter notebook code only, using existing Lab06–Lab08 overlays or compatible public downloadable overlays. No RTL, HLS, Vivado, IP generation or new bitstream generation is part of the assignment.
 
 Every notebook must demonstrate a real PL operation, document the selected board and the matching .bit/.hwh files, explain the ARM–FPGA interaction, compare results to software, and show practical outputs. If a compatible ready-made overlay is not found, the project is **conditional** and cannot yet be allocated as a co-design FPGA project.
+
+### Mandatory SW/HW performance comparison
+
+Every project must compare a pure software implementation running on the board's ARM cores with an implementation using the FPGA accelerator, for the same task and input data, and verify equivalent results. At least one presentation slide must include a comparison table (execution time, throughput or FPS) and/or an illustrative graph. Measure end-to-end processing time, including transfers and required ARM processing; report overlay loading separately. A speedup is not required. For HW-02, compare the same digital sequence emitted on pins, using throughput and timing consistency; generating a Python array alone is not an equivalent software implementation.
 
 ### Public overlay examples
 
