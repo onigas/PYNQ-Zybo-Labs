@@ -9,19 +9,19 @@ The **13 project ideas** are listed below. Each detailed page prioritizes a **sp
 
 | Code | Project title | Board | SW/HW comparison |
 | --- | --- | --- | --- |
-| HW-01 | [FPGA-Based Sensor Calibration and Arithmetic Processing](Details/HW-01.md) | Zybo Legacy Possible |
-| HW-02 | [Programmable Digital Waveform Generator Using Logictools](Details/HW-02.md) | PYNQ-Z2 To be verified |
-| HW-03 | [FIR Filter Accelerator](Details/HW-03.md) | PYNQ-Z2 Possible |
-| HW-04 | [FFT Accelerator — Adam Taylor MZ448](Details/HW-04.md) | PYNQ-Z2 To be verified |
-| HW-05 | [PS-Controlled Audio Processing](Details/HW-05.md) | PYNQ-Z2 / Zybo Legacy Not yet possible |
-| HW-06 | [Sobel Edge Detection Accelerator](Details/HW-06.md) | Zybo Legacy / PYNQ-Z2 Possible |
-| HW-07 | [Programmable 2D Convolution Accelerator](Details/HW-07.md) | Zybo Legacy / PYNQ-Z2 To be verified |
-| HW-09 | [FPGA Sensor Data Preprocessing](Details/HW-09.md) | Zybo Legacy / PYNQ-Z2 To be verified |
-| HW-10 | [Real-Time Signal Anomaly Detector](Details/HW-10.md) | Zybo Legacy / PYNQ-Z2 Not yet possible |
-| HW-11 | [Matrix Operations Accelerator](Details/HW-11.md) | Zybo Legacy / PYNQ-Z2 Possible |
-| HW-12 | [Image Histogram Accelerator](Details/HW-12.md) | Zybo Legacy / PYNQ-Z2 Possible |
-| HW-13 | [Run-Length Encoding Compression Accelerator](Details/HW-13.md) | Zybo Legacy / PYNQ-Z2 Not yet possible |
-| HW-14 | [ECG QRS Detection Accelerator](Details/HW-14.md) | Zybo Legacy / PYNQ-Z2 Not yet possible |
+| HW-01 | [FPGA-Based Sensor Calibration and Arithmetic Processing](Details/HW-01.md) | Zybo Legacy | Possible |
+| HW-02 | [Programmable Digital Waveform Generator Using Logictools](Details/HW-02.md) | PYNQ-Z2 | To be verified |
+| HW-03 | [FIR Filter Accelerator](Details/HW-03.md) | PYNQ-Z2 | Possible |
+| HW-04 | [FFT Accelerator — Adam Taylor MZ448](Details/HW-04.md) | PYNQ-Z2 | To be verified |
+| HW-05 | [PS-Controlled Audio Processing](Details/HW-05.md) | PYNQ-Z2 / Zybo Legacy | Not yet possible |
+| HW-06 | [Sobel Edge Detection Accelerator](Details/HW-06.md) | Zybo Legacy / PYNQ-Z2 | Possible |
+| HW-07 | [Programmable 2D Convolution Accelerator](Details/HW-07.md) | Zybo Legacy / PYNQ-Z2 | To be verified |
+| HW-09 | [FPGA Sensor Data Preprocessing](Details/HW-09.md) | Zybo Legacy / PYNQ-Z2 | To be verified |
+| HW-10 | [Real-Time Signal Anomaly Detector](Details/HW-10.md) | Zybo Legacy / PYNQ-Z2 | Not yet possible |
+| HW-11 | [Matrix Operations Accelerator](Details/HW-11.md) | Zybo Legacy / PYNQ-Z2 | Possible |
+| HW-12 | [Image Histogram Accelerator](Details/HW-12.md) | Zybo Legacy / PYNQ-Z2 | Possible |
+| HW-13 | [Run-Length Encoding Compression Accelerator](Details/HW-13.md) | Zybo Legacy / PYNQ-Z2 | Not yet possible |
+| HW-14 | [ECG QRS Detection Accelerator](Details/HW-14.md) | Zybo Legacy / PYNQ-Z2 | Not yet possible |
 
 **SW/HW comparison:** **Possible** — a comparison can be defined using the identified implementation (not a claim of measured speedup or board compatibility); **To be verified** — compatibility or the comparison method still needs checking; **Not yet possible** — no matching accelerator implementation is currently confirmed. Board-specific conditions remain in the detailed project pages.
 
